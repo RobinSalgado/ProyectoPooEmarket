@@ -2,71 +2,117 @@ package user;
 
 import enums.AccountType;
 import info.CardInfo;
+import util.initializeUsers;
 
 import java.util.List;
+import java.util.Scanner; // I use scanner because it's command line.
+
 
 public class Customer extends User {
-    private String name;
-    private String lastName;
-    private String email;
-    private List<CardInfo> cardsInfo; // puede registrar una o mÃ¡s tarjetas
-    private double accountBalance;
-    private String customerAddress;
-    private AccountType accountType;
+	private String name;
+	private String lastName;
+	private String email;
+	private List<CardInfo> cardsInfo; // puede registrar una o mÃ¡s tarjetas
+	private double accountBalance;
+	private String customerAddress;
+	private AccountType accountType;
 
-    public String getName() {
-        return name;
-    }
+	// Inicio de setters & getters.
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public List<CardInfo> getCardsInfo() {
-        return cardsInfo;
-    }
+	public List<CardInfo> getCardsInfo() {
+		return cardsInfo;
+	}
 
-    public void setCardsInfo(List<CardInfo> cardsInfo) {
-        this.cardsInfo = cardsInfo;
-    }
+	public void setCardsInfo(List<CardInfo> cardsInfo) {
+		this.cardsInfo = cardsInfo;
+	}
 
-    public double getAccountBalance() {
-        return accountBalance;
-    }
+	public double getAccountBalance() {
+		return accountBalance;
+	}
 
-    public void setAccountBalance(double accountBalance) {
-        this.accountBalance = accountBalance;
-    }
+	public void setAccountBalance(double accountBalance) {
+		this.accountBalance = accountBalance;
+	}
 
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
+	public String getCustomerAddress() {
+		return customerAddress;
+	}
 
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
-    }
+	public void setCustomerAddress(String customerAddress) {
+		this.customerAddress = customerAddress;
+	}
 
-    public AccountType getAccountType() {
-        return accountType;
-    }
+	public AccountType getAccountType() {
+		return accountType;
+	}
 
-    public void setAccountType(AccountType accountType) {
-        this.accountType = accountType;
-    }
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
+	}
+	// Fin de setters & getters.
+
+
+	public void logIn() {
+
+		/*Cargamos los usuarios registrados.*/
+		initializeUsers u = new initializeUsers();
+		u.loadUsers();
+		/*Se registra el nombre de usuario.*/
+		Scanner keyBoard = new Scanner(System.in);
+		System.out.println("Introduzca su usuario: ");
+		String inpUser = keyBoard.nextLine();
+		/*Validamos que el usuario esté registrado.*/
+		boolean validUser = u.users.containsKey(inpUser);
+		/*Si no está registrado se le vuelve a pedir el nombre de usuario.*/
+		while( !validUser ) {
+			System.out.println();
+			System.err.println("Nombre de usuario "+ "(--'"+inpUser+"'--)"
+					+" NO registrado"); 
+			System.out.println("Introduzca nuevamente el usuario: ");
+			inpUser = keyBoard.nextLine();
+			validUser =(u.users.containsKey(inpUser));		
+		}
+
+		/*Se registra la contraseña.*/
+		System.out.println("Introduzca su contraseña: ");
+		String inpPass = keyBoard.nextLine(); // Obtiene entradas del usuario.
+		/*Cargamos la contraseña que está en nuestro sistema.*/
+		Customer current = u.users.get(inpUser);
+		/*Se valida que concuerden las contraseñas introduzida vs sistema.*/
+		boolean validPass = current.getPassword().equalsIgnoreCase(inpPass); 
+
+		while ( !validPass ) {
+			System.out.println();
+			System.err.println("Contraseña INCORRECTA");
+			System.out.println("Introduzca nuevamente su contraseña: ");
+			inpPass = keyBoard.nextLine(); // Obtiene entradas del usuario.
+			validPass = current.getPassword().equalsIgnoreCase(inpPass);
+		}
+		keyBoard.close();
+		System.out.println("Login EXITOSO");
+	}
 }

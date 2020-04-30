@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Map;
 
 public class initializeUsers {
-    Map<String, Customer> users;
+    public Map<String, Customer> users; //Cambié a public para usarlo en otras clases.
+    
     public initializeUsers() {
         this.users = new HashMap<>();
     }
@@ -20,7 +21,7 @@ public class initializeUsers {
     public void loadUsers() {
         Customer c1 = new Customer();
         c1.setUserID("User-1");
-        c1.setPassword("123456789");
+        c1.setPassword("123");
         c1.setLoginStatus(true);
         c1.setRegisterDate("28-04-2020");
         c1.setName("Juan Pablo");
@@ -48,7 +49,8 @@ public class initializeUsers {
         c1.setCustomerAddress("Zapopan, Jalisco");
         c1.setAccountType(AccountType.PREMIUM);
         // Fin del seteo del customer 1
-        users.put(c1.getUserID(), c1);
+//        users.put(c1.getUserID(), c1);
+        addUser(c1);
     }
 
     public void addUser(Customer customer) {
