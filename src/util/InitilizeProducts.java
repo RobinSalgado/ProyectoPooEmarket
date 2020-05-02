@@ -26,31 +26,31 @@ public class InitilizeProducts extends genID{
         //AEROPOSTALE
         ProductInfo p1 = new ProductInfo();
         p1.setProductID(genID("Producto"));
-        p1.setProductName("Aéropostale cuello redondo.");
+        p1.setProductName("AÃ©ropostale cuello redondo.");
         p1.setCost(239.20);
-        p1.setDescription("Playera blanca de manga corta marca Aéropostale.");
+        p1.setDescription("Playera blanca de manga corta marca AÃ©ropostale.");
         p1.setProductType(ProductType.ROPA);
-        p1.setProductBrand(ProductBrands.AÉROPOSTALE);
+        p1.setProductBrand(ProductBrands.AEROPOSTALE);
         p1.setGenderType(GenderType.HOMBRE);
         products.put(p1.getProductID(), p1);
         ///
         ProductInfo p2 = new ProductInfo();
         p2.setProductID(genID("Producto"));
-        p2.setProductName("Aéropostale cuello redondo.");
+        p2.setProductName("AÃ©ropostale cuello redondo.");
         p2.setCost(239.20);
-        p2.setDescription("Playera azul marino de manga corta marca Aéropostale.");
+        p2.setDescription("Playera azul marino de manga corta marca AÃ©ropostale.");
         p2.setProductType(ProductType.ROPA);
-        p2.setProductBrand(ProductBrands.AÉROPOSTALE);
+        p2.setProductBrand(ProductBrands.AEROPOSTALE);
         p2.setGenderType(GenderType.HOMBRE);
         products.put(p2.getProductID(), p2);
         ///
         ProductInfo p3 = new ProductInfo();
         p3.setProductID(genID("Producto"));
-        p3.setProductName("Aéropostale cuello redondo.");
+        p3.setProductName("AÃ©ropostale cuello redondo.");
         p3.setCost(319.20);
-        p3.setDescription("Playera a rayas de manga corta marca Aéropostale.");
+        p3.setDescription("Playera a rayas de manga corta marca AÃ©ropostale.");
         p3.setProductType(ProductType.ROPA);
-        p3.setProductBrand(ProductBrands.AÉROPOSTALE);
+        p3.setProductBrand(ProductBrands.AEROPOSTALE);
         p3.setGenderType(GenderType.HOMBRE);
         products.put(p3.getProductID(), p3);
 
@@ -230,7 +230,7 @@ public class InitilizeProducts extends genID{
         p20.setProductID(genID("Producto"));
         p20.setProductName("Huawei P30 Pro.");
         p20.setCost(14_499.00);
-        p20.setDescription("Smartphone 6.47” FHD+, 40MP Leica Quad Camera, 256 GB.");
+        p20.setDescription("Smartphone 6.47â€� FHD+, 40MP Leica Quad Camera, 256 GB.");
         p20.setProductType(ProductType.CELULARES);
         p20.setProductBrand(ProductBrands.HUAWEI);
         p20.setGenderType(GenderType.UNISEX);

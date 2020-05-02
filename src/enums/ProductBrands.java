@@ -6,7 +6,7 @@ public enum ProductBrands {
     PUMA,
     ADIDAS,
     VANS,
-    AÉROPOSTALE,
+    AEROPOSTALE,
 
 
     //CELULARES
