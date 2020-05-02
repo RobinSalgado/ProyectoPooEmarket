@@ -96,7 +96,7 @@ public class Customer extends User {
 		}
 
 		/*Se registra la contrase�a.*/
-		System.out.println("Introduzca su contrase�a: ");
+		System.out.println("Introduzca su contrasena: ");
 		String inpPass = keyBoard.nextLine(); // Obtiene entradas del usuario.
 		/*Cargamos la contrase�a que est� en nuestro sistema.*/
 		Customer current = u.users.get(inpUser);
@@ -105,8 +105,8 @@ public class Customer extends User {
 
 		while ( !validPass ) {
 			System.out.println();
-			System.err.println("Contrase�a INCORRECTA");
-			System.out.println("Introduzca nuevamente su contrase�a: ");
+			System.err.println("Contrasena INCORRECTA");
+			System.out.println("Introduzca nuevamente su contrasena: ");
 			inpPass = keyBoard.nextLine(); // Obtiene entradas del usuario.
 			validPass = current.getPassword().equalsIgnoreCase(inpPass);
 		}
@@ -120,13 +120,16 @@ public class Customer extends User {
 
 	public void signUp() {
 		Customer newCstmr = new Customer();
+		initializeUsers newUsr = new initializeUsers();
 		Scanner keyBoard = new Scanner(System.in);
 		
 		System.out.println("Introduzca un nombre de usuario: ");
 		String inpUser = keyBoard.nextLine();
 		newCstmr.setUser(inpUser);
 
+
 		System.out.println("Introduzca su nueva contrasena: ");
+
 
 		inpUser = keyBoard.nextLine();
 		newCstmr.setPassword(inpUser);
@@ -145,8 +148,6 @@ public class Customer extends User {
 
 		newCstmr.setRegisterDate("30-04-2020");
 //		keyBoard.close();
-
-		initializeUsers newUsr = new initializeUsers();
 		newUsr.addUser(newCstmr);
 		System.out.println(newUsr.users.keySet());
 		System.out.println("\n");
