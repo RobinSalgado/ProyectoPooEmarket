@@ -121,15 +121,12 @@ public class Customer extends User {
 	public void signUp() {
 		Customer newCstmr = new Customer();
 		Scanner keyBoard = new Scanner(System.in);
+		
 		System.out.println("Introduzca un nombre de usuario: ");
 		String inpUser = keyBoard.nextLine();
 		newCstmr.setUser(inpUser);
 
-
-		
-		
-		System.out.println("Introduzca su nueva contraseña: ");
-
+		System.out.println("Introduzca su nueva contrasena: ");
 
 		inpUser = keyBoard.nextLine();
 		newCstmr.setPassword(inpUser);
@@ -142,7 +139,7 @@ public class Customer extends User {
 		inpUser = keyBoard.nextLine();
 		newCstmr.setLastName(inpUser);
 
-		System.out.println("Ingrese su correo electrï¿½nico: ");
+		System.out.println("Ingrese su correo electronico: ");
 		inpUser = keyBoard.nextLine();
 		newCstmr.setEmail(inpUser);
 
@@ -151,6 +148,7 @@ public class Customer extends User {
 
 		initializeUsers newUsr = new initializeUsers();
 		newUsr.addUser(newCstmr);
+		System.out.println(newUsr.users.keySet());
 		System.out.println("\n");
 	}//Fin de signUp.
 	

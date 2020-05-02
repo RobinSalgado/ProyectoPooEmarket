@@ -9,7 +9,7 @@ public class TestUser {
 		initializeUsers u = new initializeUsers();
 		Customer Cstmr = new Customer();
 		Cstmr.signUp();
-//		System.out.println(u.users.entrySet());
+		System.out.println(u.users.keySet());
 		Cstmr.logIn();
 
 	}
