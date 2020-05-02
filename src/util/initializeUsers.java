@@ -116,7 +116,7 @@ public class initializeUsers extends genID{
         cardInfoC3_1.setCardType(CardType.DEBITO);
         cardInfoC3_1.setExpirationDate("11/22");
         cardInfoC3_1.setAddressCard("Uruapan, Michoacan");
-        cardInfoC3_1.setBankEmisor(BankType.BANCOMER);
+        cardInfoC3_1.setBankEmisor(BankType.BBVA);
         cardInfoC3_1.setPaymentType("Completo");
 //---- fin del card Info -------
 
