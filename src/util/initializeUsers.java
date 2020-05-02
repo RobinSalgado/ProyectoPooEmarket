@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class initializeUsers extends genID{
-    Map<String, Customer> users;
+    public Map<String, Customer> users;
     public initializeUsers() {
         this.users = new HashMap<>();
     }

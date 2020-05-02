@@ -1,8 +1,17 @@
 package enums;
 
 public enum ProductBrands {
+    //ROPA
     NIKE,
     PUMA,
     ADIDAS,
-    VANS
+    VANS,
+    AÉROPOSTALE,
+
+
+    //CELULARES
+    APPLE,
+    SAMSUNG,
+    HUAWEI,
+    MOTOROLA,
 }

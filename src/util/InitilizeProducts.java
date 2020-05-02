@@ -10,11 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+//coment
+
 /**
  * Esta clase servira para inicializar productos que el usuario pueda ver al empezar el programa.
  */
 public class InitilizeProducts extends genID{
-    Map<String, ProductInfo> products;
+    public Map<String, ProductInfo> products;
 
     public InitilizeProducts() {
         this.products = new HashMap<>();
