@@ -20,6 +20,7 @@ public class initializeUsers extends genID{
     public void loadUsers() {
 ///////////////////////////CUSTOMER 3
         Customer c1 = new Customer();
+        c1.setUser("JuanP");
         c1.setUserID(genID("User"));
         c1.setPassword("123");
         c1.setLoginStatus(true);
@@ -53,6 +54,7 @@ public class initializeUsers extends genID{
 
 ///////////////////////////CUSTOMER 2
         Customer c2 = new Customer();
+        c2.setUser("Robins");
         c2.setUserID(genID("User"));
         c2.setPassword("123");
         c2.setLoginStatus(true);
@@ -99,6 +101,7 @@ public class initializeUsers extends genID{
 
 ///////////////////////////CUSTOMER 3
         Customer c3 = new Customer();
+        c3.setUser("Rodrigo");
         c3.setUserID(genID("User"));
         c3.setPassword("123");
         c3.setLoginStatus(true);
@@ -134,6 +137,7 @@ public class initializeUsers extends genID{
     public void addUser(Customer customer) {
 
         users.put(customer.getUser(), customer);
+        System.out.println(users.keySet());
 
     }
 }
