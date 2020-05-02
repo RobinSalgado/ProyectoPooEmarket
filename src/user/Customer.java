@@ -120,17 +120,13 @@ public class Customer extends User {
 
 	public void signUp() {
 		Customer newCstmr = new Customer();
+		initializeUsers newUsr = new initializeUsers();
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Introduzca un nombre de usuario: ");
 		String inpUser = keyBoard.nextLine();
 		newCstmr.setUser(inpUser);
 
-
-		
-		
 		System.out.println("Introduzca su nueva contraseña: ");
-
-
 		inpUser = keyBoard.nextLine();
 		newCstmr.setPassword(inpUser);
 
@@ -148,8 +144,6 @@ public class Customer extends User {
 
 		newCstmr.setRegisterDate("30-04-2020");
 //		keyBoard.close();
-
-		initializeUsers newUsr = new initializeUsers();
 		newUsr.addUser(newCstmr);
 		System.out.println("\n");
 	}//Fin de signUp.
