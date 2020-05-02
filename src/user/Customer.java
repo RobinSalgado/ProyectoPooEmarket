@@ -130,7 +130,6 @@ public class Customer extends User {
 		
 		System.out.println("Introduzca su nueva contraseña: ");
 
-		System.out.println("Introduzca su nueva contraseï¿½a: ");
 
 		inpUser = keyBoard.nextLine();
 		newCstmr.setPassword(inpUser);
