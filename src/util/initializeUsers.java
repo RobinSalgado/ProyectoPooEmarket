@@ -21,7 +21,7 @@ public class initializeUsers extends genID{
 ///////////////////////////CUSTOMER 3
         Customer c1 = new Customer();
         c1.setUserID(genID("User"));
-        c1.setPassword("123456789");
+        c1.setPassword("123");
         c1.setLoginStatus(true);
         c1.setRegisterDate("28-04-2020");
         c1.setName("Juan Pablo");
@@ -49,12 +49,12 @@ public class initializeUsers extends genID{
         c1.setCustomerAddress("Zapopan, Jalisco");
         c1.setAccountType(AccountType.PREMIUM);
         // Fin del seteo del customer 1
-        users.put(c1.getUserID(), c1);
+        addUser(c1);
 
 ///////////////////////////CUSTOMER 2
         Customer c2 = new Customer();
         c2.setUserID(genID("User"));
-        c2.setPassword("123456789");
+        c2.setPassword("123");
         c2.setLoginStatus(true);
         c2.setRegisterDate("28-04-2020");
         c2.setName("Moises Robin");
@@ -95,12 +95,12 @@ public class initializeUsers extends genID{
         c2.setCustomerAddress("Zapopan, Jalisco");
         c2.setAccountType(AccountType.PREMIUM_PLUS);
 // Fin del seteo del customer 2
-        users.put(c2.getUserID(), c2);
+       addUser(c2);
 
 ///////////////////////////CUSTOMER 3
         Customer c3 = new Customer();
         c3.setUserID(genID("User"));
-        c3.setPassword("12345678");
+        c3.setPassword("123");
         c3.setLoginStatus(true);
         c3.setRegisterDate("28-04-2020");
         c3.setName("Rodrigo");
@@ -129,9 +129,9 @@ public class initializeUsers extends genID{
         c3.setCustomerAddress("Uruapan, Michoacan");
         c3.setAccountType(AccountType.FREE);
 // Fin del seteo del customer 2
-        users.put(c3.getUserID(), c3);
+        addUser(c3);
     }
     public void addUser(Customer customer) {
-        users.put(customer.getUserID(), customer);
+        users.put(customer.getName(), customer);
     }
 }

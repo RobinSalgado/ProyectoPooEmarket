@@ -119,12 +119,13 @@ public class Customer extends User {
 	}//Fin de logIn.
 
 	public void signUp() {
+		Customer newCstmr = new Customer();
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Introduzca un nombre de usuario: ");
 		String inpUser = keyBoard.nextLine();
 
-		Customer newCstmr = new Customer();
-		newCstmr.setUserID(inpUser);
+		
+		
 		System.out.println("Introduzca su nueva contraseña: ");
 		inpUser = keyBoard.nextLine();
 		newCstmr.setPassword(inpUser);
@@ -146,6 +147,7 @@ public class Customer extends User {
 
 		initializeUsers newUsr = new initializeUsers();
 		newUsr.addUser(newCstmr);
+		System.out.println("\n");
 	}//Fin de signUp.
 	
 	
