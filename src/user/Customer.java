@@ -75,9 +75,7 @@ public class Customer extends User {
 	}
 	// Fin de setters & getters.
 
-
 	public void logIn() {
-
 		/*Cargamos los usuarios registrados.*/
 		initializeUsers u = new initializeUsers();
 		u.loadUsers();
@@ -112,7 +110,46 @@ public class Customer extends User {
 			inpPass = keyBoard.nextLine(); // Obtiene entradas del usuario.
 			validPass = current.getPassword().equalsIgnoreCase(inpPass);
 		}
-		keyBoard.close();
+		System.out.println();
 		System.out.println("Login EXITOSO");
-	}
-}
+		
+		Menus m = new Menus();
+		m.menuPrincipal();
+		keyBoard.close();
+	}//Fin de logIn.
+
+	public void signUp() {
+		Scanner keyBoard = new Scanner(System.in);
+		System.out.println("Introduzca un nombre de usuario: ");
+		String inpUser = keyBoard.nextLine();
+
+		Customer newCstmr = new Customer();
+		newCstmr.setUserID(inpUser);
+		System.out.println("Introduzca su nueva contraseña: ");
+		inpUser = keyBoard.nextLine();
+		newCstmr.setPassword(inpUser);
+
+		System.out.println("Registre su nombre real: ");
+		inpUser = keyBoard.nextLine();
+		newCstmr.setName(inpUser);
+
+		System.out.println("Registre sus apellidos: ");
+		inpUser = keyBoard.nextLine();
+		newCstmr.setLastName(inpUser);
+
+		System.out.println("Ingrese su correo electrónico: ");
+		inpUser = keyBoard.nextLine();
+		newCstmr.setEmail(inpUser);
+
+		newCstmr.setRegisterDate("30-04-2020");
+//		keyBoard.close();
+
+		initializeUsers newUsr = new initializeUsers();
+		newUsr.addUser(newCstmr);
+	}//Fin de signUp.
+	
+	
+} // Fin de la clase.
+
+
+
