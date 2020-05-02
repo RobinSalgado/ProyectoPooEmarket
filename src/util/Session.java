@@ -53,6 +53,7 @@ public class Session {
 
     public void signUp() {
         Customer newCustomer = new Customer();
+
         Scanner keyBoard = new Scanner(System.in);
         System.out.println("Introduzca un nombre de usuario: ");
         String inpUser = keyBoard.nextLine();
@@ -75,9 +76,6 @@ public class Session {
         newCustomer.setEmail(inpUser);
 
         newCustomer.setRegisterDate("30-04-2020");
-//		keyBoard.close();
-        System.out.println(this);
         this.users.addUser(newCustomer);
-        //System.out.println("\n");
     }//Fin de signUp.
 }
