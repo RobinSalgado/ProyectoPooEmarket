@@ -1,27 +1,29 @@
 package info;
 
+import enums.GenderType;
 import enums.ProductBrands;
 import enums.ProductType;
 import info.interfaces.IInfo;
 
 public class ProductInfo implements IInfo {
-    private String orderID;
+    private String productID;
     private String productName;
     private double cost;
     private String description;
     private ProductBrands productBrand;
     private ProductType productType;
+    private GenderType genderType;
     @Override
     public Object getInfo() {
         return null;
     }
 
-    public String getOrderID() {
-        return orderID;
+    public String getProductID() {
+        return productID;
     }
 
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
+    public void setProductID(String orderID) {
+        this.productID = orderID;
     }
 
     public String getProductName() {
@@ -63,4 +65,8 @@ public class ProductInfo implements IInfo {
     public void setProductType(ProductType productType) {
         this.productType = productType;
     }
+
+    public GenderType getGenderType() { return genderType; }
+
+    public void setGenderType(GenderType genderType) { this.genderType = genderType; }
 }
