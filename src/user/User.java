@@ -4,9 +4,18 @@ import java.util.Date;
 
 public class User {
     private String userID;
+    private String user;
     private String password;
     private boolean loginStatus;
     private String registerDate;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public User() {
         userID = "";

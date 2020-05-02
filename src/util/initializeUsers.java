@@ -132,6 +132,8 @@ public class initializeUsers extends genID{
         addUser(c3);
     }
     public void addUser(Customer customer) {
-        users.put(customer.getName(), customer);
+
+        users.put(customer.getUser(), customer);
+
     }
 }

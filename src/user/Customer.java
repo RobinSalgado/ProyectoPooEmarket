@@ -83,9 +83,9 @@ public class Customer extends User {
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Introduzca su usuario: ");
 		String inpUser = keyBoard.nextLine();
-		/*Validamos que el usuario esté registrado.*/
+		/*Validamos que el usuario estï¿½ registrado.*/
 		boolean validUser = u.users.containsKey(inpUser);
-		/*Si no está registrado se le vuelve a pedir el nombre de usuario.*/
+		/*Si no estï¿½ registrado se le vuelve a pedir el nombre de usuario.*/
 		while( !validUser ) {
 			System.out.println();
 			System.err.println("Nombre de usuario "+ "(--'"+inpUser+"'--)"
@@ -95,18 +95,18 @@ public class Customer extends User {
 			validUser =(u.users.containsKey(inpUser));		
 		}
 
-		/*Se registra la contraseña.*/
-		System.out.println("Introduzca su contraseña: ");
+		/*Se registra la contraseï¿½a.*/
+		System.out.println("Introduzca su contraseï¿½a: ");
 		String inpPass = keyBoard.nextLine(); // Obtiene entradas del usuario.
-		/*Cargamos la contraseña que está en nuestro sistema.*/
+		/*Cargamos la contraseï¿½a que estï¿½ en nuestro sistema.*/
 		Customer current = u.users.get(inpUser);
-		/*Se valida que concuerden las contraseñas introduzida vs sistema.*/
+		/*Se valida que concuerden las contraseï¿½as introduzida vs sistema.*/
 		boolean validPass = current.getPassword().equalsIgnoreCase(inpPass); 
 
 		while ( !validPass ) {
 			System.out.println();
-			System.err.println("Contraseña INCORRECTA");
-			System.out.println("Introduzca nuevamente su contraseña: ");
+			System.err.println("Contraseï¿½a INCORRECTA");
+			System.out.println("Introduzca nuevamente su contraseï¿½a: ");
 			inpPass = keyBoard.nextLine(); // Obtiene entradas del usuario.
 			validPass = current.getPassword().equalsIgnoreCase(inpPass);
 		}
@@ -123,10 +123,15 @@ public class Customer extends User {
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Introduzca un nombre de usuario: ");
 		String inpUser = keyBoard.nextLine();
+		newCstmr.setUser(inpUser);
+
 
 		
 		
 		System.out.println("Introduzca su nueva contraseña: ");
+
+		System.out.println("Introduzca su nueva contraseï¿½a: ");
+
 		inpUser = keyBoard.nextLine();
 		newCstmr.setPassword(inpUser);
 
@@ -138,7 +143,7 @@ public class Customer extends User {
 		inpUser = keyBoard.nextLine();
 		newCstmr.setLastName(inpUser);
 
-		System.out.println("Ingrese su correo electrónico: ");
+		System.out.println("Ingrese su correo electrï¿½nico: ");
 		inpUser = keyBoard.nextLine();
 		newCstmr.setEmail(inpUser);
 
