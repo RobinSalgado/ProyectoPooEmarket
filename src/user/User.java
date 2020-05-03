@@ -69,4 +69,5 @@ public class User {
     public void setRegisterDate(String registerDate) {
         this.registerDate = registerDate;
     }
+
 }

@@ -11,13 +11,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class initializeUsers extends genID{
-    public Map<String, Customer> users;
-    public initializeUsers() {
+public class InitializeUsers extends genID{
+    private Map<String, Customer> users;
+    public InitializeUsers() {
         this.users = new HashMap<>();
+        loadUsers();
     }
 
-    public void loadUsers() {
+    private void loadUsers() {
 ///////////////////////////CUSTOMER 3
         Customer c1 = new Customer();
         c1.setUser("JuanP");
@@ -135,8 +136,10 @@ public class initializeUsers extends genID{
         addUser(c3);
     }
     public void addUser(Customer customer) {
-        System.out.println("Entra add user");
         this.users.put(customer.getUser(), customer);
-        System.out.println(this.users.keySet());
+    }
+
+    public Map getUsers() {
+        return this.users;
     }
 }

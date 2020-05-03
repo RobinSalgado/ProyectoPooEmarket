@@ -2,17 +2,15 @@ package user;
 
 import enums.AccountType;
 import info.CardInfo;
-import util.initializeUsers;
 
 import java.util.List;
-import java.util.Scanner; // I use scanner because it's command line.
 
 
 public class Customer extends User {
 	private String name;
 	private String lastName;
 	private String email;
-	private List<CardInfo> cardsInfo; // puede registrar una o más tarjetas
+	private List<CardInfo> cardsInfo; // puede registrar una o mÃ¡s tarjetas
 	private double accountBalance;
 	private String customerAddress;
 	private AccountType accountType;
@@ -74,6 +72,7 @@ public class Customer extends User {
 		this.accountType = accountType;
 	}
 	// Fin de setters & getters.
+<<<<<<< HEAD
 
 	public void logIn() {
 		/*Cargamos los usuarios registrados.*/
@@ -154,6 +153,8 @@ public class Customer extends User {
 	}//Fin de signUp.
 	
 	
+=======
+>>>>>>> 855a8f0533c71636859f5e30a2e53f1d78c1d20c
 } // Fin de la clase.
 
 
