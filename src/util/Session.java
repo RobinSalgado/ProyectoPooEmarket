@@ -16,9 +16,9 @@ public class Session {
         Scanner keyBoard = new Scanner(System.in);
         System.out.println("Introduzca su usuario: ");
         String inpUser = keyBoard.nextLine();
-        /*Validamos que el usuario estï¿½ registrado.*/
+        /*Validamos que el usuario este registrado.*/
         boolean validUser = this.users.getUsers().containsKey(inpUser);
-        /*Si no estï¿½ registrado se le vuelve a pedir el nombre de usuario.*/
+        /*Si no esta registrado se le vuelve a pedir el nombre de usuario.*/
         while( !validUser ) {
             System.out.println();
             System.err.println("Nombre de usuario "+ "(--'"+inpUser+"'--)"
@@ -28,18 +28,18 @@ public class Session {
             validUser =(this.users.getUsers().containsKey(inpUser));
         }
 
-        /*Se registra la contraseï¿½a.*/
-        System.out.println("Introduzca su contraseï¿½a: ");
+        /*Se registra la contrasena.*/
+        System.out.println("Introduzca su contrasena: ");
         String inpPass = keyBoard.nextLine(); // Obtiene entradas del usuario.
-        /*Cargamos la contraseï¿½a que estï¿½ en nuestro sistema.*/
+        /*Cargamos la contrasena que esta en nuestro sistema.*/
         Customer current = (Customer) this.users.getUsers().get(inpUser);
-        /*Se valida que concuerden las contraseï¿½as introduzida vs sistema.*/
+        /*Se valida que concuerden las contrasenas introduzida vs sistema.*/
         boolean validPass = current.getPassword().equalsIgnoreCase(inpPass);
 
         while ( !validPass ) {
             System.out.println();
-            System.err.println("Contraseï¿½a INCORRECTA");
-            System.out.println("Introduzca nuevamente su contraseï¿½a: ");
+            System.err.println("Contrasena INCORRECTA");
+            System.out.println("Introduzca nuevamente su contrasena: ");
             inpPass = keyBoard.nextLine(); // Obtiene entradas del usuario.
             validPass = current.getPassword().equalsIgnoreCase(inpPass);
         }
@@ -55,11 +55,11 @@ public class Session {
         Customer newCustomer = new Customer();
 
         Scanner keyBoard = new Scanner(System.in);
-        System.out.println("Introduzca un nombre de usuario: ");
+        System.out.println("Introduzca un nuevo Nombre de usuario: ");
         String inpUser = keyBoard.nextLine();
         newCustomer.setUser(inpUser);
 
-        System.out.println("Introduzca su nueva contraseña: ");
+        System.out.println("Introduzca su nueva contrasena: ");
         inpUser = keyBoard.nextLine();
         newCustomer.setPassword(inpUser);
 
@@ -71,11 +71,13 @@ public class Session {
         inpUser = keyBoard.nextLine();
         newCustomer.setLastName(inpUser);
 
-        System.out.println("Ingrese su correo electrï¿½nico: ");
+        System.out.println("Ingrese su correo electronico: ");
         inpUser = keyBoard.nextLine();
         newCustomer.setEmail(inpUser);
 
         newCustomer.setRegisterDate("30-04-2020");
         this.users.addUser(newCustomer);
+        System.out.println("SingUp EXITOSO");
+        System.out.println("\n"); // Espaciado para dar formato en consola
     }//Fin de signUp.
 }

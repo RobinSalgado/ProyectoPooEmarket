@@ -1,6 +1,12 @@
 package cart;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import info.ProductInfo;
+
 public class ShoppingCart {
+	public Map<String, ProductInfo> cartProducts = new HashMap<>(); 
     private String shoppingCartId;
     private String productId;
     private int quantity;

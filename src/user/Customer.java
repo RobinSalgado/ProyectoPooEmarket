@@ -10,7 +10,7 @@ public class Customer extends User {
 	private String name;
 	private String lastName;
 	private String email;
-	private List<CardInfo> cardsInfo; // puede registrar una o mÃ¡s tarjetas
+	private List<CardInfo> cardsInfo; // puede registrar una o mas tarjetas
 	private double accountBalance;
 	private String customerAddress;
 	private AccountType accountType;
