@@ -91,4 +91,10 @@ public class CardInfo implements IInfo {
     public Object getInfo() {
         return null;
     }
+
+    public String showInfo(){
+        return "card ID: " + getCardID() + "\nNombre de tarjetabiente: " + getCardName() + "\nNumero de tarjeta: " + getCardNumber() + "\nCodigo de seguridad: " + getCvvNumber() +
+                "\nTipo de tarjeta: " + getCardType() + "\nFecha de expiración: " + getExpirationDate() + "\nDirección de factura" + getExpirationDate() + "\nBanco: " + getBankEmisor() +
+                "\nTipo de pago: " + getPaymentType();
+    }
 }

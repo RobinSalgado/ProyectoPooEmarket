@@ -69,4 +69,9 @@ public class ProductInfo implements IInfo {
     public GenderType getGenderType() { return genderType; }
 
     public void setGenderType(GenderType genderType) { this.genderType = genderType; }
+
+    public String showInfo(){
+        return "ID del producto: " + getProductID() + "\nNombre del producto: " + getProductName() + "\nPrecio: " + getCost() + "\nDescripción: " + getDescription() + "\nMarca: " + getProductBrand() +
+                "\nTipo de producto: " + getProductType() + "\nGenero: " + getGenderType();
+    }
 }

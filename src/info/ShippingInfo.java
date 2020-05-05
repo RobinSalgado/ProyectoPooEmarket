@@ -71,4 +71,9 @@ public class ShippingInfo implements IInfo {
     public Object getInfo() {
         return null;
     }
+
+    public String showInfo(){
+        return "ID de entrega: " + getShippingId() + "\nTipo de entrega: " + getShippingType() + "\nCosto de entrega: " + getShippingCost() + "\nCP Origen: " + getZipCodeOrigin() + "\nCP Entrega: " + getZipCodeRecipient() +
+                "\nFecha de registro: " + getDateCreated() + "\nFecha de envío: " + getDateShipped();
+    }
 }

@@ -71,4 +71,9 @@ public class PaymentInfo implements IInfo {
     public Object getInfo() {
         return null;
     }
+
+    public String showInfo(){
+        return "ID de transacción: " + getTransactionId() + "\nInformacion de tarjeta: " + getCardInfo() + "\nCodigo de promoción: " + getPromotionCode() + "\nDetalles de pago: " + getPaymentDetails() +
+                "\nEstatus de pago: " + getPaymentStatus() + "\nSubtotal: " + getSubTotal() + "\nTotal: " + getTotal();
+    }
 }
