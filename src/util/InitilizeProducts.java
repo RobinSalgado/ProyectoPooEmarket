@@ -4,15 +4,11 @@ import enums.GenderType;
 import enums.ProductBrands;
 import enums.ProductType;
 import info.ProductInfo;
-import user.Customer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -44,7 +40,7 @@ public class InitilizeProducts extends genID{
 		///
 		ProductInfo p2 = new ProductInfo();
 		p2.setProductID(genID("Producto"));
-		p2.setProductName("Aeropostale cuello redondo.");
+		p2.setProductName("Aeropostale cuello redondo azul.");
 		p2.setCost(239.20);
 		p2.setDescription("Playera azul marino de manga corta marca Aeropostale.");
 		p2.setProductType(ProductType.ROPA);
@@ -268,115 +264,36 @@ public class InitilizeProducts extends genID{
 	}
 
 	public void seeProdAddProd() {
-		Set<String> setKeysProd = products.keySet();
-		Collection<ProductInfo> CollValuesProd = products.values();
-		
-		loadProducts();
-		int cont = 1;
-		for(String key : setKeysProd){
-			System.out.println(cont+") "+ key );
-			cont++;
-		}
+        
+        loadProducts();
+        int i = 1;
+        Map<Integer, ProductInfo> auxMap = new HashMap<>();
+        // products : "camiseta nike", "productInfo"
+        // auxMap   : 1 : productInfo
+        for(String key : this.products.keySet()) {
+            auxMap.put(i, this.products.get(key));
+            System.out.println(i++ + ".-" + key);
+        }
 
-		//Tomamos lo que ingrese el usuario.
-		System.out.println();
+        System.out.println();
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese un numero para agregar al carrito:\n");
 		String inpUsr = keyBoard.nextLine();
-		Integer intInpUsr =Integer.parseInt(inpUsr);
-
-
-		String elements[] = new String[products.size()];
-		setKeysProd.toArray(elements);
-		Object objArray[] = CollValuesProd.toArray(); 
-
-
-		switch(intInpUsr) {
-		
-		case 1: addProdToCar.put(elements[0], (ProductInfo) objArray[0]);
-		System.out.println("se agrego al carrito (" + elements[0]+")");break;
-		
-		case 2: addProdToCar.put(elements[1], (ProductInfo) objArray[1]);
-		System.out.println("se agrego al carrito (" + elements[1]+")");break;
-		
-		case 3: addProdToCar.put(elements[2], (ProductInfo) objArray[2]);
-		System.out.println("se agrego al carrito (" + elements[2]+")");break;
-		
-		case 4: addProdToCar.put(elements[3], (ProductInfo) objArray[3]);
-		System.out.println("se agrego al carrito (" + elements[3]+")");break;
-		
-		case 5: addProdToCar.put(elements[4], (ProductInfo) objArray[4]);
-		System.out.println("se agrego al carrito (" + elements[4]+")");break;
-		
-		case 6: addProdToCar.put(elements[5], (ProductInfo) objArray[5]);
-		System.out.println("se agrego al carrito (" + elements[5]+")");break;
-		
-		case 7: addProdToCar.put(elements[6], (ProductInfo) objArray[6]);
-		System.out.println("se agrego al carrito (" + elements[6]+")");break;
-		
-		case 8: addProdToCar.put(elements[7], (ProductInfo) objArray[7]);
-		System.out.println("se agrego al carrito (" + elements[7]+")");break;
-		
-		case 9: addProdToCar.put(elements[8], (ProductInfo) objArray[8]);
-		System.out.println("se agrego al carrito (" + elements[8]+")");break;
-		
-		case 10: addProdToCar.put(elements[9], (ProductInfo) objArray[9]);
-		System.out.println("se agrego al carrito (" + elements[9]+")");break;
-		
-		case 11: addProdToCar.put(elements[10], (ProductInfo) objArray[10]);
-		System.out.println("se agrego al carrito (" + elements[10]+")");break;
-		
-		case 12: addProdToCar.put(elements[11], (ProductInfo) objArray[11]);
-		System.out.println("se agrego al carrito (" + elements[11]+")");break;
-		
-		case 13: addProdToCar.put(elements[12], (ProductInfo) objArray[12]);
-		System.out.println("se agrego al carrito (" + elements[12]+")");break;
-		
-		case 14: addProdToCar.put(elements[13], (ProductInfo) objArray[13]);
-		System.out.println("se agrego al carrito (" + elements[13]+")");break;
-		
-		case 15: addProdToCar.put(elements[14], (ProductInfo) objArray[14]);
-		System.out.println("se agrego al carrito (" + elements[14]+")");break;
-		
-		case 16: addProdToCar.put(elements[15], (ProductInfo) objArray[15]);
-		System.out.println("se agrego al carrito (" + elements[15]+")");break;
-		
-		case 17: addProdToCar.put(elements[16], (ProductInfo) objArray[16]);
-		System.out.println("se agrego al carrito (" + elements[16]+")");break;
-		
-		case 18: addProdToCar.put(elements[17], (ProductInfo) objArray[17]);
-		System.out.println("se agrego al carrito (" + elements[17]+")");break;
-		
-		case 19: addProdToCar.put(elements[18], (ProductInfo) objArray[18]);
-		System.out.println("se agrego al carrito (" + elements[18]+")");break;
-		
-		case 20: addProdToCar.put(elements[19], (ProductInfo) objArray[19]);
-		System.out.println("se agrego al carrito (" + elements[19]+")");break;
-		
-		}
-		System.out.println(this.addProdToCar.keySet());
+        Integer intInpUsr =Integer.parseInt(inpUsr);
+        if(intInpUsr <= i) {
+            addProduct(intInpUsr, auxMap);
+        }
 	}// Fin de metodo seeProducts.
-	
+    
+    public void addProduct(int n, Map<Integer, ProductInfo> aux) {
+        this.addProdToCar.put(aux.get(n).getProductName(), aux.get(n));
+    }
+
 	public void seeCar() {
-		loadProducts();
-		System.err.println(this.addProdToCar.keySet());
-		System.err.println(this.products.keySet());
-		System.err.println("estoy en la f(x) seeCar opcion 3");
-		Set<String> setKeysCar = addProdToCar.keySet();
-		String arrKeysCar[] = new String[addProdToCar.size()];
-		setKeysCar.toArray(arrKeysCar);
-		System.err.println(arrKeysCar.length);
-		
-		
-		for ( int i = 0; i < arrKeysCar.length; i++) {
-			if ( i == 0) System.out.println("Productos en el carrito:");
-			else
-			System.out.println( (i+1)+ ")" + arrKeysCar[i] );
-		}
-		
-		
+        //this.addProdToCar;
+        for(String key : this.addProdToCar.keySet()) {
+            System.out.println(key);
+        }
 	}
-	ArrayList<Object> oList = new ArrayList<>();
-	
 }// Fin de la clase.
 
