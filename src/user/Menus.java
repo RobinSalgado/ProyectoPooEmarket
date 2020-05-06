@@ -4,26 +4,29 @@ import java.util.Scanner;
 
 import util.InitializeUsers;
 import util.InitilizeProducts;
+import util.IntroProduct;
 
 public class Menus {
-
+	InitilizeProducts containsProd = new InitilizeProducts();
 	public void menuPrincipal() {
 		System.out.println();//Espaciado--
 		Scanner keyBoard = new Scanner(System.in);
-		System.out.println("Ingrese una opción:\n"
+		System.out.println("Ingrese una opciï¿½n:\n"
 				+"1) Hacer una compra\n"
 				+"2) Actualizar perfil\n"
-				+"3) Ver historial de compras\n");
+				+"3) Ver historial de compras\n"
+				+"4) Poner producto a la venta");
 		String inpUsr = keyBoard.nextLine();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
 
-		if ( intInpUsr > 3 || intInpUsr < 1) {
-			System.err.println("Opción no valida\n");
+		if ( intInpUsr > 4 || intInpUsr < 1) {
+			System.err.println("Opciï¿½n no valida\n");
 			menuPrincipal();
 		} else {
 			switch(intInpUsr) {
 			case 1: menuCompra();
 			case 2: menuProductos();
+			case 4: addNewProductToSell();
 			}
 		}	
 	}// Fin de menuPrincipal
@@ -31,50 +34,59 @@ public class Menus {
 	public void menuCompra() {
 		System.out.println();//Espaciado--
 		Scanner keyBoard = new Scanner(System.in);
-		System.out.println("Ingrese una opción de compra:\n"
+		System.out.println("Ingrese una opciï¿½n de compra:\n"
 				+"1) Regresar\n"
 				+"2) Ver productos - Agregar al carrito\n"
 				+"3) Ordenar compra\n"
 				+"4) Ver carrito\n");
 		String inpUsr = keyBoard.nextLine();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
-
-		if ( intInpUsr < 0 || intInpUsr > 4) {
-
-		}
 		switch(intInpUsr) {
-		case 1: menuPrincipal();
-		case 2: menuProductos();
+			case 1: 
+				menuPrincipal();
+				break;
+			case 2: 
+				menuProductos();
+				break;
+			default: 
+				System.err.println("Opcion invalida");
+				break;
 		}
+		
 	}// Fin de menuCompra
 
 	public void menuProductos() {
 		System.out.println(); //Espaciado--
 		Scanner keyBoard = new Scanner(System.in);
-		System.out.println("Ingrese una opción de productos:\n"
+		System.out.println("Ingrese una opciï¿½n de productos:\n"
 				+"1) Regresar\n"
 				+"2) Lista de productos - Agregar a carrito\n"
 				+"3) Ver carrito\n");
 		String inpUsr = keyBoard.nextLine();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
-		InitilizeProducts containsProd = new InitilizeProducts();
 
 		if ( intInpUsr < 1 || intInpUsr > 4) {
-			System.err.println("Opción no valida\n");
+			System.err.println("Opciï¿½n no valida\n");
 			menuProductos();
 		}else {
 			switch(intInpUsr) {
 			case 1: menuCompra();
 			case 2: 
-				containsProd.seeProdAddProd();
+				containsProd.showProducts();
 				menuProductos();
 				break;
 
-			case 3: containsProd.seeCar();break;
+			case 3: 
+				containsProd.seeCar();
+				break;
 			case 4: System.out.println("Mostrar los productos que hay en carrito");break;
 			}
 		}
 	}// Fin menuProductos
 
-
+	public void addNewProductToSell() {
+		IntroProduct newProduct = new IntroProduct();
+		newProduct.RegProduct(this.containsProd);
+		menuPrincipal();
+	}
 }

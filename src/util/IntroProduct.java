@@ -8,10 +8,8 @@ import info.ProductInfo;
 import java.util.Scanner;
 
 public class IntroProduct {
-    private InitilizeProducts products;
-
-    public IntroProduct(){ products = new InitilizeProducts();}
-    public void RegProduct(){
+    public IntroProduct(){}
+    public void RegProduct(InitilizeProducts products){
         ProductInfo newProduct = new ProductInfo();
         Scanner kb = new Scanner(System.in);
         System.out.println("Introduzca un nombre de producto: ");
@@ -19,14 +17,10 @@ public class IntroProduct {
         newProduct.setProductName(sProduct);
 
         System.out.println("Introduzca el precio del producto: ");
-        double dProduct = kb.nextDouble();
-        newProduct.setCost(dProduct);
+        String dProduct = kb.nextLine();
+        newProduct.setCost(Double.valueOf(dProduct));
 
-        System.out.println("Introduzca descipcion del producto: ");
-        sProduct = kb.nextLine();
-        newProduct.setProductName(sProduct);
-
-        System.out.println("Introduzca un nombre de producto: ");
+        System.out.println("Introduzca descripcion del producto: ");
         sProduct = kb.nextLine();
         newProduct.setProductName(sProduct);
 
@@ -35,40 +29,20 @@ public class IntroProduct {
         switch (iProduct){
             case 1:
                 newProduct.setProductType(ProductType.ROPA);
+                break;
             case 2:
                 newProduct.setProductType(ProductType.CELULARES);
+                break;
         }
 
         System.out.println("Introduzca marca de producto: ");
         switch (iProduct){
             case 1:
-                System.out.println("OPCIONES: \n1) NIKE\n2) PUMA\n3) ADIDAS\n4) VANS\n5) AEROPOSTALE");
-                iProduct = kb.nextInt();
-                switch (iProduct){
-                    case 1:
-                        newProduct.setProductBrand(ProductBrands.NIKE);
-                    case 2:
-                        newProduct.setProductBrand(ProductBrands.PUMA);
-                    case 3:
-                        newProduct.setProductBrand(ProductBrands.ADIDAS);
-                    case 4:
-                        newProduct.setProductBrand(ProductBrands.VANS);
-                    case 5:
-                        newProduct.setProductBrand(ProductBrands.AEROPOSTALE);
-                }
+                clothesBrands(newProduct); 
+                break;
             case 2:
-                System.out.println("OPCIONES: \n1) APPLE\n2) SAMSUNG\n3) HUAWEI\n4) MOTOROLA");
-                iProduct = kb.nextInt();
-                switch (iProduct){
-                    case 1:
-                        newProduct.setProductBrand(ProductBrands.APPLE);
-                    case 2:
-                        newProduct.setProductBrand(ProductBrands.SAMSUNG);
-                    case 3:
-                        newProduct.setProductBrand(ProductBrands.HUAWEI);
-                    case 4:
-                        newProduct.setProductBrand(ProductBrands.MOTOROLA);
-                }
+                cellphonesBrands(newProduct);
+                break;
         }
 
         System.out.println("Introduzca Genero de producto: \n1) HOMBRE\n2) MUJER\n3) UNISEX");
@@ -82,7 +56,49 @@ public class IntroProduct {
                 newProduct.setGenderType(GenderType.UNISEX);
         }
 
-        this.products.addProduct(newProduct);
+        products.addProduct(newProduct);
     }//Fin de registro de producto.
+    private void clothesBrands(ProductInfo newProduct) {
+        System.out.println("OPCIONES: \n1) NIKE\n2) PUMA\n3) ADIDAS\n4) VANS\n5) AEROPOSTALE");
+        Scanner kb = new Scanner(System.in);
+        Integer iProduct = kb.nextInt();
+        switch (iProduct){
+            case 1:
+                newProduct.setProductBrand(ProductBrands.NIKE);
+                break;
+            case 2:
+                newProduct.setProductBrand(ProductBrands.PUMA);
+                break;
+            case 3:
+                newProduct.setProductBrand(ProductBrands.ADIDAS);
+                break;
+            case 4:
+                newProduct.setProductBrand(ProductBrands.VANS);
+                break;
+            case 5:
+                newProduct.setProductBrand(ProductBrands.AEROPOSTALE);
+                break;
+        }
+    }
 
+    private void cellphonesBrands(ProductInfo newProduct) {
+        System.out.println("OPCIONES: \n1) APPLE\n2) SAMSUNG\n3) HUAWEI\n4) MOTOROLA");
+        Scanner kb = new Scanner(System.in);
+        Integer iProduct = kb.nextInt();
+        iProduct = kb.nextInt();
+        switch (iProduct) {
+            case 1:
+                newProduct.setProductBrand(ProductBrands.APPLE);
+                break;
+            case 2:
+                newProduct.setProductBrand(ProductBrands.SAMSUNG);
+                break;
+            case 3:
+                newProduct.setProductBrand(ProductBrands.HUAWEI);
+                break;
+            case 4:
+                newProduct.setProductBrand(ProductBrands.MOTOROLA);
+                break;
+        }
+    }
 }

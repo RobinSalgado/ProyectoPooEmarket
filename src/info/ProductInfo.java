@@ -13,6 +13,7 @@ public class ProductInfo implements IInfo {
     private ProductBrands productBrand;
     private ProductType productType;
     private GenderType genderType;
+    private int productStock; // para ver la existencia del producto
     @Override
     public Object getInfo() {
         return null;
@@ -73,5 +74,13 @@ public class ProductInfo implements IInfo {
     public String showInfo(){
         return "ID del producto: " + getProductID() + "\nNombre del producto: " + getProductName() + "\nPrecio: " + getCost() + "\nDescripción: " + getDescription() + "\nMarca: " + getProductBrand() +
                 "\nTipo de producto: " + getProductType() + "\nGenero: " + getGenderType();
+    }
+
+    public int getProductStock() {
+        return this.productStock;
+    }
+
+    public void setProductStock(int productStock) {
+        this.productStock = productStock;
     }
 }
