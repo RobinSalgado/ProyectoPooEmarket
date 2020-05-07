@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class IntroProduct {
     public IntroProduct(){}
+    
     public void RegProduct(InitilizeProducts products){
         ProductInfo newProduct = new ProductInfo();
         Scanner kb = new Scanner(System.in);
