@@ -174,7 +174,7 @@ public class Menus {
 	    	Scanner keyBoard = new Scanner(System.in);
 	    	System.out.println("Ingrese el num de producto que desea eliminar:\n");
 	    	containsProd.seeCar();
-			String inpUser = keyBoard.nextLine();
+			String inpUser = keyBoard.nextLine(); 
 			Integer intInpUser = Integer.parseInt(inpUser);
 			containsProd.eliminateProduct(intInpUser);
 	    }

@@ -302,16 +302,19 @@ public class InitilizeProducts extends genID{
 	}
 
 	public void eliminateProduct(int n) {
-		Map<Integer, ProductInfo> auxMap = new HashMap<>();
-		int i = 1;
-		// products : "camiseta nike", "productInfo"
-		// auxMap   : 1 : productInfo
-		for(String key : this.addProdToCar.keySet()) { 
-			auxMap.put(i, this.addProdToCar.get(key));
+		if(n <= this.addProdToCar.size()) {
+			Map<Integer, ProductInfo> auxMap = new HashMap<>();
+			int i = 1;
+			// products : "camiseta nike", "productInfo"
+			// auxMap   : 1 : productInfo
+			for(String key : this.addProdToCar.keySet()) { 
+				auxMap.put(i++, this.addProdToCar.get(key));
+			}
+	
+			this.addProdToCar.remove(auxMap.get(n).getProductName());
+		} else {
+			System.err.println("numero de producto inexistente");
 		}
-
-		this.addProdToCar.remove(auxMap.get(n).getProductName());
-
 	}
 
 	public void eliminateCarr() {
