@@ -10,7 +10,16 @@ import util.IntroProduct;
 public class Menus {
 	InitilizeProducts containsProd = new InitilizeProducts();
 	InitializeUsers u = new InitializeUsers();
+
+	public void cleanConsole() {
+		try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            /*No hacer nada*/
+        }
+	}
 	public void menuPrincipal() {
+		cleanConsole();
 		System.out.println();//Espaciado--
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese una opcion:\n"
@@ -35,14 +44,14 @@ public class Menus {
 	}// Fin de menuPrincipal
 
 	public void menuCompra() {
+		cleanConsole();
 		System.out.println();//Espaciado--
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese una opcion de compra:\n"
 				+"----------------------------\n"
 				+"1) Regresar\n"
 				+"2) Ver productos - Agregar al carrito\n"
-				+"3) Ordenar compra\n"
-				+"4) Ver carrito\n");
+				+"3) Ver carrito\n");
 		String inpUsr = keyBoard.nextLine();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
 		switch(intInpUsr) {
@@ -52,6 +61,9 @@ public class Menus {
 		case 2: 
 			menuProductos();
 			break;
+		case 3:
+			menuCarrito();
+			break;
 		default: 
 			System.err.println("Opcion invalida");
 			break;
@@ -60,6 +72,7 @@ public class Menus {
 	}// Fin de menuCompra
 
 	public void menuProductos() {
+		cleanConsole();
 		System.out.println(); //Espaciado--
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese una opcion de productos:\n"
@@ -103,6 +116,7 @@ public class Menus {
 	}// Fin menuProductos
 
 	public void menuCarrito() {
+		cleanConsole();
 		System.out.println();
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese una opcion de carrito:\n"
@@ -140,6 +154,7 @@ public class Menus {
 	}
 
 	public void menuUpdateProfile() {
+		cleanConsole();
 		System.out.println("Ingrese que datos desea cambiar:\n"
 				+"--------------------------------\n"
 				+"1) Regresar Menu Principal\n"
@@ -155,6 +170,7 @@ public class Menus {
 	}
 
 	   public void deleteProduct() {
+			cleanConsole();
 	    	Scanner keyBoard = new Scanner(System.in);
 	    	System.out.println("Ingrese el num de producto que desea eliminar:\n");
 	    	containsProd.seeCar();
@@ -164,6 +180,7 @@ public class Menus {
 	    }
 
 	   public void updateProfileMenu() {
+			cleanConsole();
 		   Scanner keyBoard = new Scanner(System.in);
 	    	System.out.println("Ingrese su nombre de usuario actual:");
 	    	String usrName = keyBoard.nextLine();

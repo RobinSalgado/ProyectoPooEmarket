@@ -2,7 +2,7 @@ package info;
 
 import info.interfaces.IInfo;
 
-public class ShippingInfo implements IInfo {
+public class ShippingInfo implements IInfo<ShippingInfo> {
     private String shippingId; // "SHIPPING-32427230572395"
     private String shippingType;
     private double shippingCost;
@@ -68,12 +68,20 @@ public class ShippingInfo implements IInfo {
     }
 
     @Override
-    public Object getInfo() {
-        return null;
+    public ShippingInfo getInfo() {
+        return this;
     }
 
-    public String showInfo(){
-        return "ID de entrega: " + getShippingId() + "\nTipo de entrega: " + getShippingType() + "\nCosto de entrega: " + getShippingCost() + "\nCP Origen: " + getZipCodeOrigin() + "\nCP Entrega: " + getZipCodeRecipient() +
-                "\nFecha de registro: " + getDateCreated() + "\nFecha de envío: " + getDateShipped();
+    @Override
+    public String toString() {
+        return "shippingId: " + shippingId
+                + "zipCodeOrigin: " + zipCodeOrigin 
+                + "zipCodeRecipient: " + zipCodeRecipient
+                + "dateCreated: " + dateCreated 
+                + "dateShipped: " + dateShipped 
+                + "shippingType: " + shippingType 
+                + "shippingCost:" + shippingCost  ;
     }
+
+    
 }

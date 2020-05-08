@@ -2,7 +2,7 @@ package info;
 
 import info.interfaces.IInfo;
 
-public class PaymentInfo implements IInfo {
+public class PaymentInfo implements IInfo<PaymentInfo> {
     private String transactionId;
     private CardInfo cardInfo;
     private String promotionCode;
@@ -68,12 +68,18 @@ public class PaymentInfo implements IInfo {
     }
 
     @Override
-    public Object getInfo() {
-        return null;
+    public PaymentInfo getInfo() {
+        return this;
     }
 
-    public String showInfo(){
-        return "ID de transacción: " + getTransactionId() + "\nInformacion de tarjeta: " + getCardInfo() + "\nCodigo de promoción: " + getPromotionCode() + "\nDetalles de pago: " + getPaymentDetails() +
-                "\nEstatus de pago: " + getPaymentStatus() + "\nSubtotal: " + getSubTotal() + "\nTotal: " + getTotal();
+    @Override
+    public String toString() {
+        return "transactionId:" + transactionId + "\n"
+                + "paymentStatus:" + paymentStatus + "\n"
+                + cardInfo + "\n"
+                + "subTotal: " + subTotal + "\n"
+                + "total=" + total + "\n";
     }
+
+    
 }

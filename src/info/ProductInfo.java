@@ -5,7 +5,7 @@ import enums.ProductBrands;
 import enums.ProductType;
 import info.interfaces.IInfo;
 
-public class ProductInfo implements IInfo {
+public class ProductInfo implements IInfo<ProductInfo> {
     private String productID;
     private String productName;
     private double cost;
@@ -14,9 +14,10 @@ public class ProductInfo implements IInfo {
     private ProductType productType;
     private GenderType genderType;
     private int productStock; // para ver la existencia del producto
+    
     @Override
-    public Object getInfo() {
-        return null;
+    public ProductInfo getInfo() {
+        return this;
     }
 
     public String getProductID() {
@@ -83,4 +84,17 @@ public class ProductInfo implements IInfo {
     public void setProductStock(int productStock) {
         this.productStock = productStock;
     }
+
+    @Override
+    public String toString() {
+        return "    cost:" + cost + "\n"
+                + "    description: " + description + "\n" 
+                + "    genderType: " + genderType + "\n"
+                + "    productBrand: " + productBrand + "\n" 
+                + "    productID: " + productID + "\n"
+                + "    productStock: " + productStock + "\n"
+                + "    productType: " + productType + "\n";
+    }
+
+    
 }

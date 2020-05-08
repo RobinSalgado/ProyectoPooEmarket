@@ -279,6 +279,7 @@ public class InitilizeProducts extends genID{
 			if(this.products.get(key).getProductStock() > 0) {
 				auxMap.put(i, this.products.get(key));
 				System.out.println(i++ + ".- " + key);
+				System.err.println(this.products.get(key).getInfo());
 			}
 		}
 

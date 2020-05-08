@@ -55,18 +55,19 @@ public class Session {
     }//Fin de logIn.
 
     public void signUp() {
+        Menus m = new Menus();
         Customer newCustomer = new Customer();
 
         Scanner keyBoard = new Scanner(System.in);
-        System.out.println("Introduzca un nuevo Nombre de usuario: ");
+        System.out.println("Introduzca usuario: ");
         String inpUser = keyBoard.nextLine();
         newCustomer.setUser(inpUser);
 
-        System.out.println("Introduzca su nueva contrasena: ");
+        System.out.println("Introduzca contrasena: ");
         inpUser = keyBoard.nextLine();
         newCustomer.setPassword(inpUser);
 
-        System.out.println("Registre su nombre real: ");
+        System.out.println("Registre su nombre: ");
         inpUser = keyBoard.nextLine();
         newCustomer.setName(inpUser);
 
@@ -82,6 +83,7 @@ public class Session {
         this.users.addUser(newCustomer);
         System.out.println("SingUp EXITOSO");
         System.out.println("\n"); // Espaciado para dar formato en consola
+        m.cleanConsole();
     }//Fin de signUp.
     
 

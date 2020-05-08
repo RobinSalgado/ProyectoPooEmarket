@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1ede59c9-c5ac-4fc3-82f0-03522f36ae85" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/TestUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/TestUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/initializeUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/initializeUsers.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,7 +40,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../thomsonreuters/Projects/drummer/flfe-drummer" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -58,6 +54,26 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="TestUser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="user.TestUser" />
+      <module name="ECOMMERCE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestUser" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -69,7 +85,8 @@
       <option name="presentableId" value="Default" />
       <updated>1588119715384</updated>
       <workItem from="1588119721457" duration="6664000" />
-      <workItem from="1588433879548" duration="2933000" />
+      <workItem from="1588433879548" duration="9045000" />
+      <workItem from="1588610992504" duration="163000" />
     </task>
     <servers />
   </component>
@@ -81,7 +98,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

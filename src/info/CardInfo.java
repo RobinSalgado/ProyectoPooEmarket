@@ -4,7 +4,7 @@ import enums.BankType;
 import enums.CardType;
 import info.interfaces.IInfo;
 
-public class CardInfo implements IInfo {
+public class CardInfo implements IInfo<CardInfo> {
     private String cardID;
     private String cardName;
     private String cardNumber;
@@ -88,13 +88,17 @@ public class CardInfo implements IInfo {
     }
 
     @Override
-    public Object getInfo() {
-        return null;
+    public CardInfo getInfo() {
+        return this;
     }
 
-    public String showInfo(){
-        return "card ID: " + getCardID() + "\nNombre de tarjetabiente: " + getCardName() + "\nNumero de tarjeta: " + getCardNumber() + "\nCodigo de seguridad: " + getCvvNumber() +
-                "\nTipo de tarjeta: " + getCardType() + "\nFecha de expiración: " + getExpirationDate() + "\nDirección de factura" + getExpirationDate() + "\nBanco: " + getBankEmisor() +
-                "\nTipo de pago: " + getPaymentType();
+    @Override
+    public String toString() {
+        return  "CardID: " + cardID + "\n"
+                + "BankEmisor: " + bankEmisor + "\n"
+                + "CardNumber: " + "**** **** **** " + cardNumber.substring(11) + "\n"
+                + "PaymentType=" + paymentType + "\n";
     }
+
+    
 }
