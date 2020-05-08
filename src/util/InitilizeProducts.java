@@ -20,11 +20,12 @@ import java.util.Set;
 public class InitilizeProducts extends genID{
 	public Map<String, ProductInfo> products;
 	public Map<String, ProductInfo> addProdToCar;
-	
+
+
 	public InitilizeProducts() {
 		this.products = new HashMap<>();
-        this.addProdToCar = new HashMap<>();
-        loadProducts();
+		this.addProdToCar = new HashMap<>();
+		loadProducts();
 	}
 
 	public void loadProducts(){
@@ -36,8 +37,8 @@ public class InitilizeProducts extends genID{
 		p1.setDescription("Playera blanca de manga corta marca Aeropostale.");
 		p1.setProductType(ProductType.ROPA);
 		p1.setProductBrand(ProductBrands.AEROPOSTALE);
-        p1.setGenderType(GenderType.HOMBRE);
-        p1.setProductStock(100);
+		p1.setGenderType(GenderType.HOMBRE);
+		p1.setProductStock(100);
 		products.put(p1.getProductName(), p1);
 		///
 		ProductInfo p2 = new ProductInfo();
@@ -47,8 +48,8 @@ public class InitilizeProducts extends genID{
 		p2.setDescription("Playera azul marino de manga corta marca Aeropostale.");
 		p2.setProductType(ProductType.ROPA);
 		p2.setProductBrand(ProductBrands.AEROPOSTALE);
-        p2.setGenderType(GenderType.HOMBRE);
-        p2.setProductStock(0);
+		p2.setGenderType(GenderType.HOMBRE);
+		p2.setProductStock(10);
 		products.put(p2.getProductName(), p2);
 		///
 		ProductInfo p3 = new ProductInfo();
@@ -58,8 +59,8 @@ public class InitilizeProducts extends genID{
 		p3.setDescription("Playera a rayas de manga corta marca Aeropostale.");
 		p3.setProductType(ProductType.ROPA);
 		p3.setProductBrand(ProductBrands.AEROPOSTALE);
-        p3.setGenderType(GenderType.HOMBRE);
-        p3.setProductStock(100);
+		p3.setGenderType(GenderType.HOMBRE);
+		p3.setProductStock(100);
 		products.put(p3.getProductName(), p3);
 
 		//VANS
@@ -71,6 +72,7 @@ public class InitilizeProducts extends genID{
 		p4.setProductType(ProductType.ROPA);
 		p4.setProductBrand(ProductBrands.VANS);
 		p4.setGenderType(GenderType.HOMBRE);
+		p4.setProductStock(10);
 		products.put(p4.getProductName(), p4);
 		///
 		ProductInfo p5 = new ProductInfo();
@@ -81,6 +83,7 @@ public class InitilizeProducts extends genID{
 		p5.setProductType(ProductType.ROPA);
 		p5.setProductBrand(ProductBrands.VANS);
 		p5.setGenderType(GenderType.HOMBRE);
+		p5.setProductStock(10);
 		products.put(p5.getProductName(), p5);
 		///
 		ProductInfo p6 = new ProductInfo();
@@ -268,40 +271,58 @@ public class InitilizeProducts extends genID{
 	}
 
 	public void showProducts() {
-        int i = 1;
-        Map<Integer, ProductInfo> auxMap = new HashMap<>();
-        // products : "camiseta nike", "productInfo"
-        // auxMap   : 1 : productInfo
-        for(String key : this.products.keySet()) {
-            if(this.products.get(key).getProductStock() > 0) {
-                auxMap.put(i, this.products.get(key));
-                System.out.println(i++ + ".-" + key);
-            }
-        }
+		Map<Integer, ProductInfo> auxMap = new HashMap<>();
+		int i = 1;
+		// products : "camiseta nike", "productInfo"
+		// auxMap   : 1 : productInfo
+		for(String key : this.products.keySet()) {
+			if(this.products.get(key).getProductStock() > 0) {
+				auxMap.put(i, this.products.get(key));
+				System.out.println(i++ + ".- " + key);
+			}
+		}
 
-        System.out.println();
+		System.out.println();
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese un numero para agregar al carrito:\n");
 		String inpUsr = keyBoard.nextLine();
-        Integer intInpUsr =Integer.parseInt(inpUsr);
-        if(intInpUsr <= i) {
-            addProduct(intInpUsr, auxMap);
-        }
+		Integer intInpUsr =Integer.parseInt(inpUsr);
+		if(intInpUsr <= i) {
+			addProduct(intInpUsr, auxMap);
+		}
 	}// Fin de metodo seeProducts.
-    
-    public void addProduct(int n, Map<Integer, ProductInfo> aux) {
-        this.addProdToCar.put(aux.get(n).getProductName(), aux.get(n));
-    }
 
-    public void addProduct(ProductInfo newProduct) {
-        this.products.put(newProduct.getProductName(), newProduct);
-    }
+	public void addProduct(int n, Map<Integer, ProductInfo> aux) {
+		this.addProdToCar.put(aux.get(n).getProductName(), aux.get(n));
+	}
+
+	public void addProduct(ProductInfo newProduct) {
+		this.products.put(newProduct.getProductName(), newProduct);
+	}
+
+	public void eliminateProduct(int n) {
+		Map<Integer, ProductInfo> auxMap = new HashMap<>();
+		int i = 1;
+		// products : "camiseta nike", "productInfo"
+		// auxMap   : 1 : productInfo
+		for(String key : this.addProdToCar.keySet()) { 
+			auxMap.put(i, this.addProdToCar.get(key));
+		}
+
+		this.addProdToCar.remove(auxMap.get(n).getProductName());
+
+	}
+
+	public void eliminateCarr() {
+		this.addProdToCar.clear();	
+	}
 
 	public void seeCar() {
-        //this.addProdToCar;
-        for(String key : this.addProdToCar.keySet()) {
-            System.out.println(key);
-        }
+		//this.addProdToCar;
+		int cont = 1;
+		for(String key : this.addProdToCar.keySet()) {
+			System.out.println("["+(cont++)+"] "+key);
+		}
 	}
 }// Fin de la clase.
 

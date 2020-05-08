@@ -11,6 +11,7 @@ public class IntroProduct {
     public IntroProduct(){}
     
     public void RegProduct(InitilizeProducts products){
+    	System.out.println(); //Espaciado--
         ProductInfo newProduct = new ProductInfo();
         Scanner kb = new Scanner(System.in);
         System.out.println("Introduzca un nombre de producto: ");
@@ -25,6 +26,7 @@ public class IntroProduct {
         sProduct = kb.nextLine();
         newProduct.setProductName(sProduct);
 
+        System.out.println();//Espaciado--
         System.out.println("Introduzca tipo de producto: \nOPCIONES: \n1)ROPA\n2)CELULARES");
         int iProduct = kb.nextInt();
         switch (iProduct){

@@ -3,7 +3,10 @@ package util;
 import user.Customer;
 import user.Menus;
 
+import java.util.Map;
 import java.util.Scanner;
+
+import info.ProductInfo;
 
 public class Session {
     private InitializeUsers users;
@@ -80,4 +83,6 @@ public class Session {
         System.out.println("SingUp EXITOSO");
         System.out.println("\n"); // Espaciado para dar formato en consola
     }//Fin de signUp.
+    
+
 }
