@@ -142,7 +142,7 @@ public class InitializeUsers extends genID{
 		this.users.put(customer.getUser(), customer);
 	}
 
-	public Map getUsers() {
+	public Map<String, Customer> getUsers() {
 		return this.users;
 	}
 

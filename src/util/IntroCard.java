@@ -12,8 +12,9 @@ import java.util.Scanner;
 public class IntroCard extends genID{
     public IntroCard(){}
 
-    public void RegCard(Customer cards){
+    public void RegCard(Customer customer){
         CardInfo newCard = new CardInfo();
+        newCard.setCardID(genID("Card"));
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduzca nombre de tarjetahabiente: ");
         String sCard = sc.nextLine();
@@ -21,11 +22,21 @@ public class IntroCard extends genID{
 
         System.out.println("Introduzca numero de la tarjeta: ");
         sCard = sc.nextLine();
+        while(sCard.length() < 16 || sCard.length() > 16) {
+            System.out.println("el numero de tarjeta debe contener 16 digitos");
+            System.out.println("Introduzca numero de la tarjeta: ");
+            sCard = sc.nextLine();
+        }
         newCard.setCardNumber(sCard);
 
         System.out.println("Introduzca numero de seguridad: ");
-        Integer iCard = sc.nextInt();
-        newCard.setCvvNumber(iCard);
+        String iCard = sc.nextLine();
+        while(iCard.length() < 3 || iCard.length() > 3) {
+            System.out.println("el numero de seguridad debe contener 3 digitos");
+            System.out.println("Introduzca numero de seguridad: ");
+            iCard = sc.nextLine();
+        }
+        newCard.setCvvNumber(Integer.valueOf(iCard));
 
         cardType(newCard);
 
@@ -42,8 +53,8 @@ public class IntroCard extends genID{
         System.out.println("Introduzca modo de pago: ");
         sCard = sc.nextLine();
         newCard.setPaymentType(sCard);
-
-        cards.addCard(newCard);
+        System.out.println(newCard);
+        customer.addCard(newCard);
     }
 
     private void cardType(CardInfo newCard){

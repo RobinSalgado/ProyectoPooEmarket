@@ -3,6 +3,7 @@ package user;
 import enums.AccountType;
 import info.CardInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,6 +16,9 @@ public class Customer extends User {
 	private String customerAddress;
 	private AccountType accountType;
 
+	public Customer() {
+		this.cardsInfo = new ArrayList<>();
+	}
 	// Inicio de setters & getters.
 	public String getName() {
 		return name;

@@ -37,10 +37,18 @@ public class Order {
     			+ "e.g.(4467 de la calle Thompson,Col. Valle Verde)");
     	inpUsr = keyBoard.nextLine();
 
-    	//Modificar el Address que está en customer y hasmp
-    	System.out.println(usr.getUsers().get(usrName));
+    	usr.getUsers().get(usrName).setCustomerAddress(inpUsr);
 
-    	cards.RegCard();
+    	// Si no tiene tarjetas registradas
+    	if(usr.getUsers().get(usrName).getCardsInfo().size() == 0) {
+            System.out.println("no hay tarjetas registradas");
+            cards.RegCard(usr.getUsers().get(usrName));
+        } else { // si si tiene tarjetas registradas
+    	    for(int i = 1; i <usr.getUsers().get(usrName).getCardsInfo().size(); i++) {
+    	        System.out.println(i + ".- " + usr.getUsers().get(usrName).getCardsInfo().get(i));
+            }
+        }
+    	//cards.RegCard();
     	//Agregando tarjetas
     	
     }

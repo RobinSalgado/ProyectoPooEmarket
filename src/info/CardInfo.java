@@ -96,7 +96,7 @@ public class CardInfo implements IInfo<CardInfo> {
     public String toString() {
         return  "CardID: " + cardID + "\n"
                 + "BankEmisor: " + bankEmisor + "\n"
-                + "CardNumber: " + "**** **** **** " + cardNumber.substring(11) + "\n"
+                + "CardNumber: " + "**** **** **** " + cardNumber.substring(12) + "\n"
                 + "PaymentType=" + paymentType + "\n";
     }
 

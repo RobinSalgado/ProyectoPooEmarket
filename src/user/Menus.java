@@ -19,12 +19,16 @@ public class Menus {
 		this.u = new InitializeUsers();
 		this.setNombreUsrActual("");
 	}
-	public void cleanConsole() {
+	private void cleanConsole() {
 		try {
 			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 		} catch (Exception e) {
 			/*No hacer nada*/
 		}
+	}
+
+	private void enterToContinue() {
+
 	}
 	public void logIn() {
 		/*Se registra el nombre de usuario.*/
@@ -147,7 +151,23 @@ public class Menus {
 			menuCarrito();
 			break;
 		case 4:
-			o.SendProd(this.u, this.nombreUsrActual);
+			if(this.containsProd.addProdToCar.isEmpty()) {
+				System.out.println("no puedes comprar aun, agrega al menos un producto al carrito para comprar");
+				System.out.println("Presione 'ENTER' para regresar...");
+				inpUsr = keyBoard.nextLine();
+				if (!inpUsr.isEmpty()) {
+					System.err.println("Presione 'ENTER' para regresar...\n");
+					inpUsr = keyBoard.nextLine();
+					while (!inpUsr.isEmpty()) {
+						System.err.println("Presione 'ENTER' para regresar...\n");
+						inpUsr = keyBoard.nextLine();
+					}
+				}
+				menuPrincipal();
+			} else {
+				o.SendProd(this.u, this.nombreUsrActual);
+			}
+			break;
 		default: 
 			System.err.println("Opcion invalida");
 			break;
