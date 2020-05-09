@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class IntroProduct {
     public IntroProduct(){}
     
-    public void RegProduct(InitilizeProducts products){
+    public void RegProduct(InitializeProducts products){
     	System.out.println(); //Espaciado--
         ProductInfo newProduct = new ProductInfo();
         Scanner kb = new Scanner(System.in);
@@ -59,8 +59,14 @@ public class IntroProduct {
                 newProduct.setGenderType(GenderType.UNISEX);
         }
 
+        System.out.println("Introduce stock del producto: ");
+        iProduct = kb.nextInt();
+        newProduct.setProductStock(iProduct);
+
         products.addProduct(newProduct);
     }//Fin de registro de producto.
+
+
     private void clothesBrands(ProductInfo newProduct) {
         System.out.println("OPCIONES: \n1) NIKE\n2) PUMA\n3) ADIDAS\n4) VANS\n5) AEROPOSTALE");
         Scanner kb = new Scanner(System.in);

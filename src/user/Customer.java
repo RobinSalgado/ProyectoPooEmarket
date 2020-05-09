@@ -71,6 +71,12 @@ public class Customer extends User {
 	public void setAccountType(AccountType accountType) {
 		this.accountType = accountType;
 	}
+
+	public void addCard(CardInfo newCard){
+		this.cardsInfo.add(newCard);
+	}
+
+
 	// Fin de setters & getters.
 } // Fin de la clase.
 
