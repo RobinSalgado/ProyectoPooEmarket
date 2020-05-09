@@ -10,6 +10,7 @@ import info.ProductInfo;
 
 public class Session {
     private InitializeUsers users;
+    public String nombreUsrActual;//Para registrar el key del usurio que ha iniciado sesion
 
     public Session() {
         users = new InitializeUsers();
@@ -19,6 +20,7 @@ public class Session {
         Scanner keyBoard = new Scanner(System.in);
         System.out.println("Introduzca su usuario: ");
         String inpUser = keyBoard.nextLine();
+        this.nombreUsrActual = inpUser;
         /*Validamos que el usuario este registrado.*/
         boolean validUser = this.users.getUsers().containsKey(inpUser);
         /*Si no esta registrado se le vuelve a pedir el nombre de usuario.*/

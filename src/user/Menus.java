@@ -51,7 +51,8 @@ public class Menus {
 				+"----------------------------\n"
 				+"1) Regresar\n"
 				+"2) Ver productos - Agregar al carrito\n"
-				+"3) Ver carrito\n");
+				+"3) Ver carrito\n"
+				+"4) Ordenar/Enviar\n");
 		String inpUsr = keyBoard.nextLine();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
 		switch(intInpUsr) {
