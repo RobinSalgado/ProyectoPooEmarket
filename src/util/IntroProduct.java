@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class IntroProduct {
     public IntroProduct(){}
     
-    public void RegProduct(InitializeProducts products){
+    public void RegProduct(InitilizeProducts products){
     	System.out.println(); //Espaciado--
         ProductInfo newProduct = new ProductInfo();
         Scanner kb = new Scanner(System.in);
