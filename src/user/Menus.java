@@ -3,12 +3,12 @@ package user;
 import java.util.Scanner;
 
 import util.InitializeUsers;
-import util.InitilizeProducts;
+import util.InitializeProducts;
 import util.IntroProduct;
 
 
 public class Menus {
-	InitilizeProducts containsProd = new InitilizeProducts();
+	InitializeProducts containsProd = new InitializeProducts();
 	InitializeUsers u = new InitializeUsers();
 
 	public void cleanConsole() {

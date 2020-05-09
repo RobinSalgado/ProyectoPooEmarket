@@ -295,8 +295,9 @@ public class InitializeProducts extends genID{
 		for(String key : this.products.keySet()) {
 			if(this.products.get(key).getProductStock() > 0) {
 				auxMap.put(i, this.products.get(key));
-				System.out.println(i++ + ".- " + key);
-				System.err.println(this.products.get(key).getInfo());
+				System.out.println(i + ".- " + key);
+				System.out.println(this.products.get(key).getInfo());
+				i++;
 			}
 		}
 
