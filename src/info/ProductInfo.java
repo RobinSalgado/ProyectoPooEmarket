@@ -87,13 +87,13 @@ public class ProductInfo implements IInfo<ProductInfo> {
 
     @Override
     public String toString() {
-        return "    cost: " + cost + "\n"
+        return "    productID: " + productID + "\n"
                 + "    description: " + description + "\n" 
                 + "    genderType: " + genderType + "\n"
                 + "    productBrand: " + productBrand + "\n" 
                 + "    productStock: " + productStock + "\n"
                 + "    productType: " + productType + "\n"
-                + "    productID: " + productID + "\n";
+                + "    cost: " + cost + "\n";
     }
 
     
