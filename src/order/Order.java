@@ -5,6 +5,7 @@ import info.ShippingInfo;
 import util.InitializeUsers;
 
 
+
 public class Order {
     private String orderId;
     private String dateCreated;
@@ -12,7 +13,7 @@ public class Order {
     private ShippingInfo shippingInfo;
     private OrderDetails orderDetails;
     
-    public void SendProd() {
+    public void SendProd(InitializeUsers usr, String usrName) {
     	Scanner keyBoard = new Scanner(System.in);
     	System.out.println("Ingrese el tipo de envio:\n"
     			+ "1) Envio Rapido\n"
@@ -34,9 +35,9 @@ public class Order {
     			+ "e.g.(4467 de la calle Thompson,Col. Valle Verde)");
     	inpUsr = keyBoard.nextLine();
     	
-    	/*para modificar información del customer actual con un objeto que ya existe*/
-    	InitializeUsers u = new InitializeUsers(); 	
-    	
+    	System.out.println(usr.getUsers().get(usrName));
+    	// como accedo al value de users (customer)
+//    	u.getUsers().get(s.nombreUsrActual);
     	
     	
     }

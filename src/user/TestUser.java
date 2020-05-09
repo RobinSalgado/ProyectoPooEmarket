@@ -1,12 +1,11 @@
 package user;
 
-import util.Session;
 
 public class TestUser {
 
 	public static void main(String[] args) {
 
-		Session session = new Session();
+		Menus session = new Menus();
 //		session.signUp();
 		session.logIn();
 
