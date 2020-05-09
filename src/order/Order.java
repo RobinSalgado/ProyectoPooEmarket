@@ -3,6 +3,7 @@ package order;
 import java.util.Scanner;
 import info.ShippingInfo;
 import util.InitializeUsers;
+import util.IntroCard;
 
 
 
@@ -14,6 +15,7 @@ public class Order {
     private OrderDetails orderDetails;
     
     public void SendProd(InitializeUsers usr, String usrName) {
+    	IntroCard cards = new IntroCard();
     	Scanner keyBoard = new Scanner(System.in);
     	System.out.println("Ingrese el tipo de envio:\n"
     			+ "1) Envio Rapido\n"
@@ -34,11 +36,12 @@ public class Order {
     	System.out.println("Ingrese su direccion:\n"
     			+ "e.g.(4467 de la calle Thompson,Col. Valle Verde)");
     	inpUsr = keyBoard.nextLine();
-    	
+
+    	//Modificar el Address que está en customer y hasmp
     	System.out.println(usr.getUsers().get(usrName));
-    	// como accedo al value de users (customer)
-//    	u.getUsers().get(s.nombreUsrActual);
-    	
+
+    	cards.RegCard();
+    	//Agregando tarjetas
     	
     }
 
