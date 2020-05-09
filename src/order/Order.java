@@ -30,13 +30,16 @@ public class Order {
     	
     	System.out.println("Ingrese su Codigo Postal:");
     	inpUsr = keyBoard.nextLine();
-    	intInpUsr = Integer.parseInt(inpUsr);
-    	sendInfo.setZipCodeRecipient(intInpUsr);
+    	while(inpUsr.length() < 5 || inpUsr.length() > 5){
+            System.out.println("El codigo postal debe contener 5 digitos");
+            System.out.println("Ingrese su Codigo Postal:");
+            inpUsr = keyBoard.nextLine();
+        }
+    	sendInfo.setZipCodeRecipient(Integer.parseInt(inpUsr));
     	
     	System.out.println("Ingrese su direccion:\n"
     			+ "e.g.(4467 de la calle Thompson,Col. Valle Verde)");
     	inpUsr = keyBoard.nextLine();
-
     	usr.getUsers().get(usrName).setCustomerAddress(inpUsr);
 
     	// Si no tiene tarjetas registradas
