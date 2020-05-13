@@ -7,7 +7,7 @@ public class TestUser {
 
 		Menus session = new Menus();
 //		session.signUp();
-		session.logIn();
+		session.inicio();
 
 
 

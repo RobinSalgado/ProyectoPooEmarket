@@ -27,6 +27,27 @@ public class Menus {
 		}
 	}
 
+	public void inicio() {
+		Scanner keyBoard = new Scanner(System.in);
+		System.out.println("Ingerese opcion de sesion:\n"
+				+ "1) Iniciar sesion\n"
+				+ "2) Registrar cuenta nueva\n");
+		String inpUsr = keyBoard.nextLine();
+		char charcter = inpUsr.charAt(0);
+		/* Implementacion de excepción de parseo.*/ 
+		if(! isNumber( charcter,keyBoard ) )
+			inicio();
+		Integer intInpUsr = Integer.parseInt(inpUsr);
+		switch(intInpUsr) {
+		case 1: logIn();break;
+		case 2: signUp();break;
+		default: 
+			System.err.println("Opcion invalida");
+			enterToContinue(keyBoard);
+			inicio();
+			break;
+		}
+	}
 	private boolean isNumber(char c, Scanner keyBoard) {
 		try {
 			if(!Character.isDigit(c)){
@@ -34,13 +55,13 @@ public class Menus {
 			}
 		}catch (IlegalParseIntException ex) {
 
-			System.err.println("Se ingreso opion invalida");
+			System.err.println("Se ingreso opcion invalida");
 			enterToContinue(keyBoard);
 			return false;
 		}
 		return true;
 	}
-	
+
 	private void enterToContinue(Scanner keyBoard) {
 		System.out.println("Presione 'ENTER' para regresar...");
 		String inpUsr = keyBoard.nextLine();
@@ -95,12 +116,18 @@ public class Menus {
 	}//Fin de logIn.
 
 	public void signUp() {
-		Menus m = new Menus();
 		Customer newCustomer = new Customer();
 
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Introduzca usuario: ");
 		String inpUser = keyBoard.nextLine();
+		/* Validamos que no este previamente registrado el nombre de usuario.*/
+		while(u.getUsers().containsKey(inpUser)) {
+			System.err.println("El usuario que intentas registrar ¡Ya existe!");
+			System.out.println("Introduzca otro usuario: ");
+			inpUser = keyBoard.nextLine();
+		}
+			
 		newCustomer.setUser(inpUser);
 
 		System.out.println("Introduzca contrasena: ");
@@ -123,7 +150,9 @@ public class Menus {
 		this.u.addUser(newCustomer);
 		System.out.println("SingUp EXITOSO");
 		System.out.println("\n"); // Espaciado para dar formato en consola
-		m.cleanConsole();
+		cleanConsole();
+		inicio();
+		keyBoard.close();
 	}//Fin de signUp.
 
 	public void menuPrincipal() {
@@ -171,17 +200,23 @@ public class Menus {
 		char charcter = inpUsr.charAt(0);
 		/* Implementacion de excepción de parseo.*/ 
 		if(! isNumber( charcter,keyBoard ) )
-			menuPrincipal();
+			menuCompra();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
 		switch(intInpUsr) {
 		case 1: 
 			menuPrincipal();
 			break;
-		case 2: 
+		case 2:
 			menuProductos();
 			break;
 		case 3:
-			menuCarrito();
+			if( containsProd.addProdToCar.isEmpty()) {
+				System.err.println("El carrito esta vacio");
+				enterToContinue(keyBoard);
+				menuProductos();
+			}else {
+				menuCarrito();
+			}
 			break;
 		case 4:
 			if(this.containsProd.addProdToCar.isEmpty()) {
@@ -201,13 +236,15 @@ public class Menus {
 
 	public void menuProductos() {
 		cleanConsole();
+		Order o = new Order();
 		System.out.println(); //Espaciado--
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese una opcion de productos:\n"
 				+"--------------------------------\n"
 				+"1) Regresar al menu de compras\n"
 				+"2) Lista de productos - Agregar a carrito\n"
-				+"3) Ver carrito\n");
+				+"3) Ver carrito\n"
+				+"4) Ordenar/Enviar");
 		String inpUsr = keyBoard.nextLine();
 		char charcter = inpUsr.charAt(0);
 		/* Implementacion de excepción de parseo.*/ 
@@ -227,16 +264,22 @@ public class Menus {
 				break;
 
 			case 3: 
-				menuCarrito();
-				//				enterToContinue(keyBoard);
-				menuProductos();	
-				break;
+				if( containsProd.addProdToCar.isEmpty()) {
+					System.out.println("El carrito esta vacio");
+					enterToContinue(keyBoard);
+					menuProductos();
+				}else {
+					menuCarrito();
+				}break;
+			case 4: 
+				o.SendProd(this.u, this.nombreUsrActual);break;
 			}
 		}
 	}// Fin menuProductos
 
 	public void menuCarrito() {
 		cleanConsole();
+
 		System.out.println();
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese una opcion de carrito:\n"
