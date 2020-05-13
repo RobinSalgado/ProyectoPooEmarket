@@ -2,14 +2,16 @@ package info;
 
 import info.interfaces.IInfo;
 
+import java.util.Date;
+
 public class ShippingInfo implements IInfo<ShippingInfo> {
     private String shippingId; // "SHIPPING-32427230572395"
     private String shippingType;
     private double shippingCost;
     private int zipCodeOrigin;
     private int zipCodeRecipient;
-    private String dateCreated;
-    private String dateShipped;
+    private Date dateCreated;
+    private Date dateShipped;
 
     public String getShippingId() {
         return shippingId;
@@ -51,19 +53,19 @@ public class ShippingInfo implements IInfo<ShippingInfo> {
         this.zipCodeRecipient = zipCodeRecipient;
     }
 
-    public String getDateCreated() {
+    public Date getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(String dateCreated) {
+    public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    public String getDateShipped() {
+    public Date getDateShipped() {
         return dateShipped;
     }
 
-    public void setDateShipped(String dateShipped) {
+    public void setDateShipped(Date dateShipped) {
         this.dateShipped = dateShipped;
     }
 
@@ -74,13 +76,13 @@ public class ShippingInfo implements IInfo<ShippingInfo> {
 
     @Override
     public String toString() {
-        return "shippingId: " + shippingId
-                + "zipCodeOrigin: " + zipCodeOrigin 
-                + "zipCodeRecipient: " + zipCodeRecipient
-                + "dateCreated: " + dateCreated 
-                + "dateShipped: " + dateShipped 
-                + "shippingType: " + shippingType 
-                + "shippingCost:" + shippingCost  ;
+        return "shippingId: " + shippingId + "\n"
+                + "zipCodeOrigin: " + zipCodeOrigin + "\n"
+                + "zipCodeRecipient: " + zipCodeRecipient + "\n"
+                + "dateCreated: " + dateCreated + "\n"
+                + "dateShipped: " + dateShipped + "\n"
+                + "shippingType: " + shippingType + "\n"
+                + "shippingCost:" + shippingCost  + "\n";
     }
 
     

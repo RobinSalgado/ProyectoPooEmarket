@@ -2,10 +2,11 @@ package user;
 
 import java.util.Scanner;
 
-import order.Order;
+import info.PurchaseInfo;
 import util.InitializeUsers;
 import util.InitializeProducts;
 import util.IntroProduct;
+import util.PurchaseUtil;
 
 
 public class Menus {
@@ -34,7 +35,7 @@ public class Menus {
 				+ "2) Registrar cuenta nueva\n");
 		String inpUsr = keyBoard.nextLine();
 		char charcter = inpUsr.charAt(0);
-		/* Implementacion de excepción de parseo.*/ 
+		/* Implementacion de excepciï¿½n de parseo.*/ 
 		if(! isNumber( charcter,keyBoard ) )
 			inicio();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
@@ -48,7 +49,7 @@ public class Menus {
 			break;
 		}
 	}
-	private boolean isNumber(char c, Scanner keyBoard) {
+	public static boolean isNumber(char c, Scanner keyBoard) {
 		try {
 			if(!Character.isDigit(c)){
 				throw new IlegalParseIntException();	
@@ -62,7 +63,7 @@ public class Menus {
 		return true;
 	}
 
-	private void enterToContinue(Scanner keyBoard) {
+	public static void enterToContinue(Scanner keyBoard) {
 		System.out.println("Presione 'ENTER' para regresar...");
 		String inpUsr = keyBoard.nextLine();
 		if (!inpUsr.isEmpty()) {
@@ -123,7 +124,7 @@ public class Menus {
 		String inpUser = keyBoard.nextLine();
 		/* Validamos que no este previamente registrado el nombre de usuario.*/
 		while(u.getUsers().containsKey(inpUser)) {
-			System.err.println("El usuario que intentas registrar ¡Ya existe!");
+			System.err.println("El usuario que intentas registrar ï¿½Ya existe!");
 			System.out.println("Introduzca otro usuario: ");
 			inpUser = keyBoard.nextLine();
 		}
@@ -167,7 +168,7 @@ public class Menus {
 				+"4) Poner producto a la venta");
 		String inpUsr = keyBoard.nextLine();
 		char charcter = inpUsr.charAt(0);
-		/* Implementacion de excepción de parseo.*/ 
+		/* Implementacion de excepciï¿½n de parseo.*/ 
 		if(! isNumber( charcter,keyBoard ) )
 			menuPrincipal();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
@@ -186,7 +187,7 @@ public class Menus {
 	}// Fin de menuPrincipal
 
 	public void menuCompra() {
-		Order o = new Order();
+		PurchaseUtil purchase = new PurchaseUtil();
 		cleanConsole();
 		System.out.println();//Espaciado--
 		Scanner keyBoard = new Scanner(System.in);
@@ -198,7 +199,7 @@ public class Menus {
 				+"4) Ordenar/Enviar\n");
 		String inpUsr = keyBoard.nextLine();
 		char charcter = inpUsr.charAt(0);
-		/* Implementacion de excepción de parseo.*/ 
+		/* Implementacion de excepciï¿½n de parseo.*/ 
 		if(! isNumber( charcter,keyBoard ) )
 			menuCompra();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
@@ -224,7 +225,10 @@ public class Menus {
 				enterToContinue(keyBoard);
 				menuPrincipal();
 			} else {
-				o.SendProd(this.u, this.nombreUsrActual);
+				purchase.buyProduct(this.u, this.nombreUsrActual, this.containsProd);
+				System.out.println(this.u.getUsers().get(nombreUsrActual).getPurchaseInfo());
+				enterToContinue(keyBoard);
+				menuPrincipal();
 			}
 			break;
 		default: 
@@ -236,7 +240,7 @@ public class Menus {
 
 	public void menuProductos() {
 		cleanConsole();
-		Order o = new Order();
+		PurchaseUtil purchase = new PurchaseUtil();
 		System.out.println(); //Espaciado--
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese una opcion de productos:\n"
@@ -247,7 +251,7 @@ public class Menus {
 				+"4) Ordenar/Enviar");
 		String inpUsr = keyBoard.nextLine();
 		char charcter = inpUsr.charAt(0);
-		/* Implementacion de excepción de parseo.*/ 
+		/* Implementacion de excepciï¿½n de parseo.*/ 
 		if(! isNumber( charcter,keyBoard ) )
 			menuProductos();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
@@ -271,8 +275,18 @@ public class Menus {
 				}else {
 					menuCarrito();
 				}break;
-			case 4: 
-				o.SendProd(this.u, this.nombreUsrActual);break;
+			case 4:
+				if( containsProd.addProdToCar.isEmpty()) {
+					System.out.println("El carrito esta vacio");
+					enterToContinue(keyBoard);
+					menuProductos();
+				}else {
+					purchase.buyProduct(this.u, this.nombreUsrActual, this.containsProd);
+					System.out.println(this.u.getUsers().get(nombreUsrActual).getPurchaseInfo());
+					enterToContinue(keyBoard);
+					menuPrincipal();
+				}
+				break;
 			}
 		}
 	}// Fin menuProductos
@@ -290,7 +304,7 @@ public class Menus {
 				+"4) Quitar TODOS los productos en el carrito\n");
 		String inpUser = keyBoard.nextLine();
 		char charcter = inpUser.charAt(0);
-		/* Implementacion de excepción de parseo.*/ 
+		/* Implementacion de excepciï¿½n de parseo.*/ 
 		if(! isNumber( charcter,keyBoard ) )
 			menuCarrito();
 		Integer intInpUser = Integer.parseInt(inpUser);
@@ -333,7 +347,7 @@ public class Menus {
 		containsProd.seeCar();
 		String inpUser = keyBoard.nextLine(); 
 		char charcter = inpUser.charAt(0);
-		/* Implementacion de excepción de parseo.*/ 
+		/* Implementacion de excepciï¿½n de parseo.*/ 
 		if(! isNumber( charcter,keyBoard ) )
 			menuCarrito();
 		Integer intInpUser = Integer.parseInt(inpUser);
@@ -361,7 +375,7 @@ public class Menus {
 		menuUpdateProfile();
 		String inpUsr = keyBoard.nextLine();
 		char charcter = inpUsr.charAt(0);
-		/* Implementacion de excepción de parseo.*/ 
+		/* Implementacion de excepciï¿½n de parseo.*/ 
 		if(! isNumber( charcter,keyBoard ) )
 			updateProfileMenu();
 		Integer intInpUsr = Integer.parseInt(inpUsr);

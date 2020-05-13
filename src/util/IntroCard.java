@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class IntroCard extends genID{
     public IntroCard(){}
 
-    public void RegCard(Customer customer){
+    public CardInfo RegCard(Customer customer){
         CardInfo newCard = new CardInfo();
         newCard.setCardID(genID("Card"));
         Scanner sc = new Scanner(System.in);
@@ -53,8 +53,8 @@ public class IntroCard extends genID{
         System.out.println("Introduzca modo de pago: ");
         sCard = sc.nextLine();
         newCard.setPaymentType(sCard);
-        System.out.println(newCard);
         customer.addCard(newCard);
+        return newCard.getInfo();
     }
 
     private void cardType(CardInfo newCard){

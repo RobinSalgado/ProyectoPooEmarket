@@ -1,7 +1,9 @@
 package user;
 
+import details.PurchaseDetails;
 import enums.AccountType;
 import info.CardInfo;
+import info.PurchaseInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,15 @@ public class Customer extends User {
 	private double accountBalance;
 	private String customerAddress;
 	private AccountType accountType;
+	private PurchaseInfo purchaseInfo;
+
+	public PurchaseInfo getPurchaseInfo() {
+		return purchaseInfo;
+	}
+
+	public void setPurchaseInfo(PurchaseInfo purchaseInfo) {
+		this.purchaseInfo = purchaseInfo;
+	}
 
 	public Customer() {
 		this.cardsInfo = new ArrayList<>();
