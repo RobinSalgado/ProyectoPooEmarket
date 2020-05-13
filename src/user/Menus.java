@@ -27,9 +27,33 @@ public class Menus {
 		}
 	}
 
-	private void enterToContinue() {
+	private boolean isNumber(char c, Scanner keyBoard) {
+		try {
+			if(!Character.isDigit(c)){
+				throw new IlegalParseIntException();	
+			}
+		}catch (IlegalParseIntException ex) {
 
+			System.err.println("Se ingreso opion invalida");
+			enterToContinue(keyBoard);
+			return false;
+		}
+		return true;
 	}
+	
+	private void enterToContinue(Scanner keyBoard) {
+		System.out.println("Presione 'ENTER' para regresar...");
+		String inpUsr = keyBoard.nextLine();
+		if (!inpUsr.isEmpty()) {
+			System.err.println("Presione 'ENTER' para regresar...\n");
+			inpUsr = keyBoard.nextLine();
+			while (!inpUsr.isEmpty()) {
+				System.err.println("Presione 'ENTER' para regresar...\n");
+				inpUsr = keyBoard.nextLine();
+			}
+		}
+	}// Fin de enterToContinue.
+
 	public void logIn() {
 		/*Se registra el nombre de usuario.*/
 		Scanner keyBoard = new Scanner(System.in);
@@ -113,6 +137,10 @@ public class Menus {
 				+"3) Ver historial de compras\n"
 				+"4) Poner producto a la venta");
 		String inpUsr = keyBoard.nextLine();
+		char charcter = inpUsr.charAt(0);
+		/* Implementacion de excepción de parseo.*/ 
+		if(! isNumber( charcter,keyBoard ) )
+			menuPrincipal();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
 
 		if ( intInpUsr > 4 || intInpUsr < 1) {
@@ -125,6 +153,7 @@ public class Menus {
 			case 4: addNewProductToSell();break;
 			}
 		}	
+		keyBoard.close();
 	}// Fin de menuPrincipal
 
 	public void menuCompra() {
@@ -139,6 +168,10 @@ public class Menus {
 				+"3) Ver carrito\n"
 				+"4) Ordenar/Enviar\n");
 		String inpUsr = keyBoard.nextLine();
+		char charcter = inpUsr.charAt(0);
+		/* Implementacion de excepción de parseo.*/ 
+		if(! isNumber( charcter,keyBoard ) )
+			menuPrincipal();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
 		switch(intInpUsr) {
 		case 1: 
@@ -153,16 +186,7 @@ public class Menus {
 		case 4:
 			if(this.containsProd.addProdToCar.isEmpty()) {
 				System.out.println("no puedes comprar aun, agrega al menos un producto al carrito para comprar");
-				System.out.println("Presione 'ENTER' para regresar...");
-				inpUsr = keyBoard.nextLine();
-				if (!inpUsr.isEmpty()) {
-					System.err.println("Presione 'ENTER' para regresar...\n");
-					inpUsr = keyBoard.nextLine();
-					while (!inpUsr.isEmpty()) {
-						System.err.println("Presione 'ENTER' para regresar...\n");
-						inpUsr = keyBoard.nextLine();
-					}
-				}
+				enterToContinue(keyBoard);
 				menuPrincipal();
 			} else {
 				o.SendProd(this.u, this.nombreUsrActual);
@@ -181,10 +205,14 @@ public class Menus {
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese una opcion de productos:\n"
 				+"--------------------------------\n"
-				+"1) Regresar\n"
+				+"1) Regresar al menu de compras\n"
 				+"2) Lista de productos - Agregar a carrito\n"
 				+"3) Ver carrito\n");
 		String inpUsr = keyBoard.nextLine();
+		char charcter = inpUsr.charAt(0);
+		/* Implementacion de excepción de parseo.*/ 
+		if(! isNumber( charcter,keyBoard ) )
+			menuProductos();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
 
 		if ( intInpUsr < 1 || intInpUsr > 4) {
@@ -200,20 +228,8 @@ public class Menus {
 
 			case 3: 
 				menuCarrito();
-				System.out.println("Presione 'ENTER' para regresar...");
-				inpUsr = keyBoard.nextLine();
-				if (inpUsr.isEmpty()) {
-					menuProductos();
-				}else {
-					System.err.println("Presione 'ENTER' para regresar...\n");
-					inpUsr = keyBoard.nextLine();
-					while(  !inpUsr.isEmpty()) {
-						System.err.println("Presione 'ENTER' para regresar...\n");
-						inpUsr = keyBoard.nextLine();
-					}
-					menuProductos();
-
-				}
+				//				enterToContinue(keyBoard);
+				menuProductos();	
 				break;
 			}
 		}
@@ -225,11 +241,15 @@ public class Menus {
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese una opcion de carrito:\n"
 				+"------------------------------\n"
-				+"1) Regresar\n"
+				+"1) Regresar al menu productos\n"
 				+"2) Ver productos en el carrito\n"
 				+"3) Eliminar productos del carrito\n"
 				+"4) Quitar TODOS los productos en el carrito\n");
 		String inpUser = keyBoard.nextLine();
+		char charcter = inpUser.charAt(0);
+		/* Implementacion de excepción de parseo.*/ 
+		if(! isNumber( charcter,keyBoard ) )
+			menuCarrito();
 		Integer intInpUser = Integer.parseInt(inpUser);
 
 		switch ( intInpUser) {
@@ -237,19 +257,9 @@ public class Menus {
 		case 2: 
 			containsProd.seeCar();
 			System.out.println();
-			System.out.println("Presione 'ENTER' para regresar...\n");
-			inpUser = keyBoard.nextLine();
-			if (inpUser.isEmpty()) { 
-				menuProductos();
-			}else {
-				System.err.println(" Presione ENTER para regresar:\n");
-				inpUser = keyBoard.nextLine();
-				while(!inpUser.isEmpty() ) {
-					System.err.println(" Presione ENTER para regresar:\n");
-					inpUser = keyBoard.nextLine();
-				}
-				menuCarrito();
-			}break;
+			enterToContinue(keyBoard);
+			menuCarrito();
+			break;
 
 		case 3: deleteProduct();break;
 		case 4: containsProd.eliminateCarr();break;
@@ -279,6 +289,10 @@ public class Menus {
 		System.out.println("Ingrese el num de producto que desea eliminar:\n");
 		containsProd.seeCar();
 		String inpUser = keyBoard.nextLine(); 
+		char charcter = inpUser.charAt(0);
+		/* Implementacion de excepción de parseo.*/ 
+		if(! isNumber( charcter,keyBoard ) )
+			menuCarrito();
 		Integer intInpUser = Integer.parseInt(inpUser);
 		containsProd.eliminateProduct(intInpUser);
 	}
@@ -303,6 +317,10 @@ public class Menus {
 		//-------------VALIDACION--------------------------------------------- 
 		menuUpdateProfile();
 		String inpUsr = keyBoard.nextLine();
+		char charcter = inpUsr.charAt(0);
+		/* Implementacion de excepción de parseo.*/ 
+		if(! isNumber( charcter,keyBoard ) )
+			updateProfileMenu();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
 
 		switch ( intInpUsr ) {
