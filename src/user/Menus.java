@@ -130,7 +130,7 @@ public class Menus {
 			inpUser = keyBoard.nextLine();
 		}
 			
-		newCustomer.setUser(inpUser);
+		newCustomer.setUser(inpUser.trim());
 
 		System.out.println("Introduzca contrasena: ");
 		inpUser = keyBoard.nextLine();
