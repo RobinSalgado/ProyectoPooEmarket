@@ -225,7 +225,7 @@ public class Menus {
 			if(this.containsProd.addProdToCar.isEmpty()) {
 				System.out.println("no puedes comprar aun, agrega al menos un producto al carrito para comprar");
 				enterToContinue(keyBoard);
-				menuPrincipal();
+				menuCompra();
 			} else {
 				Scanner keyBoard2 = new Scanner(System.in);
 				System.out.println("1.- Regresar al menu anterior \n" +
