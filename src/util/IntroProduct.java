@@ -4,6 +4,7 @@ import enums.GenderType;
 import enums.ProductBrands;
 import enums.ProductType;
 import info.ProductInfo;
+import user.Menus;
 
 import java.util.Scanner;
 
@@ -28,8 +29,13 @@ public class IntroProduct {
 
         System.out.println();//Espaciado--
         System.out.println("Introduzca tipo de producto: \nOPCIONES: \n1)ROPA\n2)CELULARES");
-        int iProduct = kb.nextInt();
-        switch (iProduct){
+        String iProduct = kb.nextLine();
+        while(!Menus.isNumber(iProduct.charAt(0), kb)) {
+            System.out.println("Opcion invalida");//Espaciado--
+            System.out.println("Introduzca tipo de producto: \nOPCIONES: \n1)ROPA\n2)CELULARES");
+            iProduct = kb.nextLine();
+        }
+        switch (Integer.valueOf(iProduct)){
             case 1:
                 newProduct.setProductType(ProductType.ROPA);
                 break;
@@ -39,7 +45,7 @@ public class IntroProduct {
         }
 
         System.out.println("Introduzca marca de producto: ");
-        switch (iProduct){
+        switch (Integer.valueOf(iProduct)){
             case 1:
                 clothesBrands(newProduct); 
                 break;
@@ -49,8 +55,13 @@ public class IntroProduct {
         }
 
         System.out.println("Introduzca Genero de producto: \n1) HOMBRE\n2) MUJER\n3) UNISEX");
-        iProduct = kb.nextInt();
-        switch (iProduct){
+        iProduct = kb.nextLine();
+        while(!Menus.isNumber(iProduct.charAt(0), kb)) {
+            System.out.println("Opcion invalida");//Espaciado--
+            System.out.println("Introduzca tipo de producto: \nOPCIONES: \n1)ROPA\n2)CELULARES");
+            iProduct = kb.nextLine();
+        }
+        switch (Integer.valueOf(iProduct)){
             case 1:
                 newProduct.setGenderType(GenderType.HOMBRE);
             case 2:
@@ -60,8 +71,8 @@ public class IntroProduct {
         }
 
         System.out.println("Introduce stock del producto: ");
-        iProduct = kb.nextInt();
-        newProduct.setProductStock(iProduct);
+        iProduct = kb.nextLine();;
+        newProduct.setProductStock(Integer.valueOf(iProduct));
 
         products.addProduct(newProduct);
     }//Fin de registro de producto.
@@ -94,7 +105,6 @@ public class IntroProduct {
         System.out.println("OPCIONES: \n1) APPLE\n2) SAMSUNG\n3) HUAWEI\n4) MOTOROLA");
         Scanner kb = new Scanner(System.in);
         Integer iProduct = kb.nextInt();
-        iProduct = kb.nextInt();
         switch (iProduct) {
             case 1:
                 newProduct.setProductBrand(ProductBrands.APPLE);
