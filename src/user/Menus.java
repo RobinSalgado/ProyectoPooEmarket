@@ -394,7 +394,8 @@ public class Menus {
 		case 2:
 			System.out.println("Ingrese nuevo nombre de usuario:");
 			inpUsr = keyBoard.nextLine();
-			u.updateProfile(intInpUsr,usrName,inpUsr);		
+			u.updateProfile(intInpUsr,usrName,inpUsr);
+			this.nombreUsrActual = inpUsr;
 			menuPrincipal();
 			break;
 		case 3: 
