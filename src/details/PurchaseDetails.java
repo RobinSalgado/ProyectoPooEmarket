@@ -58,7 +58,6 @@ public class PurchaseDetails {
                 "orderId: " + orderId + "\n" +
                 "orderDescription: " + orderDescription + "\n" +
                 "quantity: " + quantity + "\n" +
-                "productInfo: " + productInfo + "\n" +
                 "paymentInfo: " + paymentInfo + "\n";
     }
 }

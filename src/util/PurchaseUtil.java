@@ -5,6 +5,7 @@ import info.PaymentInfo;
 import info.ProductInfo;
 import info.PurchaseInfo;
 import info.ShippingInfo;
+import user.Customer;
 import user.Menus;
 
 import java.util.*;
@@ -16,6 +17,7 @@ public class PurchaseUtil extends genID{
         IntroCard cards = new IntroCard();
         PurchaseInfo purchase = new PurchaseInfo();
         PurchaseDetails purchaseDetails = new PurchaseDetails();
+        Map<Integer, ProductInfo> auxProd = new HashMap<>();
         System.out.println("Los productos que vas a comprar, son: ");
         int a = 1;
         double subTotal = 0;
@@ -24,6 +26,7 @@ public class PurchaseUtil extends genID{
             purchaseInformation = purchaseInformation + " " + product;
             System.out.println(a + ".-" + product);
             subTotal += products.addProdToCar.get(product).getCost();
+            auxProd.put(a, products.addProdToCar.get(product));
             a++;
         }
         System.out.println();
@@ -93,8 +96,31 @@ public class PurchaseUtil extends genID{
             System.out.println("no hay tarjetas registradas");
             paymentInfo.setCardInfo(cards.RegCard(usr.getUsers().get(usrName)));
         } else { // si si tiene tarjetas registradas
-            for(int i = 1; i <usr.getUsers().get(usrName).getCardsInfo().size(); i++) {
-                System.out.println(i + ".- " + usr.getUsers().get(usrName).getCardsInfo().get(i));
+            int i = 1;
+            Map<Integer, Customer> aux = new HashMap<>();
+            for(i = 1; i <= usr.getUsers().get(usrName).getCardsInfo().size(); i++) {
+                System.out.println(i + ".- " + usr.getUsers().get(usrName).getCardsInfo().get(i-1));
+                aux.put(i, usr.getUsers().get(usrName));
+            }
+            System.out.println(i + ".- " + "Agregar una nueva tarjeta");
+            System.out.println("Selecciona la opcion que deseas: ");
+            inpUsr = keyBoard.nextLine();
+            int b = 1;
+            while (!Menus.isNumber(inpUsr.charAt(0), keyBoard)) {
+                System.err.println("Opcion invalida, por favor introduce una opcion valida");
+                for(b = 1; b <=usr.getUsers().get(usrName).getCardsInfo().size(); b++) {
+                    System.out.println(b + ".- " + usr.getUsers().get(usrName).getCardsInfo().get(b-1));
+                }
+                System.out.println(b + ".- " + "Agregar una nueva tarjeta");
+                System.out.println("Selecciona la opcion que deseas: ");
+                inpUsr = keyBoard.nextLine();
+            }
+
+            if(Integer.valueOf(inpUsr) - 1 < b) {
+                String customer = aux.get(b).getUser();
+                paymentInfo.setCardInfo(usr.getUsers().get(customer).getCardsInfo().get(b-1));
+            } else {
+                paymentInfo.setCardInfo(cards.RegCard(usr.getUsers().get(usrName)));
             }
         }
 
@@ -119,6 +145,29 @@ public class PurchaseUtil extends genID{
         purchase.setPurchaseDetails(purchaseDetails);
         // se le adjunta al usuario toda la informacion de la compra realizada
         usr.getUsers().get(usrName).setPurchaseInfo(purchase);
+
+        // ya que se compro, se deben quitar los elementos del stock
+        //auxProd con la info de los elementos que se compraron
+        // products con la info de todos los products
+        // addProdToCar con la info de todos los elementos del carrito
+        // bajarle el stock en la lista de carrito
+        int it = 0;
+
+        for(String product : products.products.keySet()) {
+            /*System.out.print("auxProd productName : ");
+            System.out.println(auxProd.get(1).getProductName());
+            System.out.print("product: ");
+            System.out.println(product);*/
+            if(auxProd.get(it + 1).getProductName() == product) {
+                int stock = products.products.get(product).getProductStock();
+                products.products.get(product).setProductStock(stock - 1);
+                it++;
+            }
+            if(it == auxProd.size()) {
+                break;
+            }
+        }
+        products.addProdToCar.clear();
         System.out.println("La compra fue un exito");
     }
 }

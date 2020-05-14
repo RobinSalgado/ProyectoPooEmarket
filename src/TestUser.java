@@ -1,5 +1,4 @@
-package user;
-
+import user.Menus;
 
 public class TestUser {
 

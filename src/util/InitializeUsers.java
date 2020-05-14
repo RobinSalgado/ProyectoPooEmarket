@@ -5,13 +5,11 @@ import enums.BankType;
 import enums.CardType;
 import info.CardInfo;
 import user.Customer;
-import user.Menus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class InitializeUsers extends genID{
 
@@ -49,7 +47,7 @@ public class InitializeUsers extends genID{
 		List<CardInfo> cardsc1 = new ArrayList<>();
 		cardsc1.add(cardInfoC1);
 		//-------fin del list
-
+		c1.setCardsInfo(cardsc1);
 		c1.setAccountBalance(1200.78);
 		c1.setCustomerAddress("Zapopan, Jalisco");
 		c1.setAccountType(AccountType.PREMIUM);

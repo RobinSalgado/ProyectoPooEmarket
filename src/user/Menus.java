@@ -2,7 +2,8 @@ package user;
 
 import java.util.Scanner;
 
-import info.PurchaseInfo;
+import user.Customer;
+import exception.IlegalParseIntException;
 import util.InitializeUsers;
 import util.InitializeProducts;
 import util.IntroProduct;
@@ -52,7 +53,7 @@ public class Menus {
 	public static boolean isNumber(char c, Scanner keyBoard) {
 		try {
 			if(!Character.isDigit(c)){
-				throw new IlegalParseIntException();	
+				throw new IlegalParseIntException();
 			}
 		}catch (IlegalParseIntException ex) {
 
@@ -164,8 +165,7 @@ public class Menus {
 				+"-------------------\n"
 				+"1) Hacer una compra\n"
 				+"2) Actualizar perfil\n"
-				+"3) Ver historial de compras\n"
-				+"4) Poner producto a la venta");
+				+"3) Poner producto a la venta");
 		String inpUsr = keyBoard.nextLine();
 		char charcter = inpUsr.charAt(0);
 		/* Implementacion de excepci�n de parseo.*/ 
@@ -173,14 +173,16 @@ public class Menus {
 			menuPrincipal();
 		Integer intInpUsr = Integer.parseInt(inpUsr);
 
-		if ( intInpUsr > 4 || intInpUsr < 1) {
+		if ( intInpUsr > 3 || intInpUsr < 1) {
 			System.err.println("Opcion no valida\n");
 			menuPrincipal();
 		} else {
 			switch(intInpUsr) {
 			case 1: menuCompra();break;
 			case 2: updateProfileMenu();break;
-			case 4: addNewProductToSell();break;
+			case 3:
+				addNewProductToSell();
+				break;
 			}
 		}	
 		keyBoard.close();

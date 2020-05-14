@@ -107,7 +107,7 @@ public class InitializeProducts extends genID{
 		p7.setProductType(ProductType.ROPA);
 		p7.setProductBrand(ProductBrands.ADIDAS);
 		p7.setGenderType(GenderType.MUJER);
-		p7.setProductStock(63);
+		p7.setProductStock(1);
 		products.put(p7.getProductName(), p7);
 		///
 		ProductInfo p8 = new ProductInfo();
@@ -283,7 +283,7 @@ public class InitializeProducts extends genID{
 		p22.setProductType(ProductType.CELULARES);
 		p22.setProductBrand(ProductBrands.MOTOROLA);
 		p22.setGenderType(GenderType.UNISEX);
-		p22.setProductStock(3);
+		p22.setProductStock(10);
 		products.put(p22.getProductName(), p22);
 	}
 

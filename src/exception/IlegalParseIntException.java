@@ -1,10 +1,10 @@
-package user;
+package exception;
 
 public class IlegalParseIntException extends Exception{
 	private static final long serialVersionUID = 1L;
 
 	public IlegalParseIntException() {
-		//Nombre que queremos que tenga la excepción.
+		//Nombre que queremos que tenga la excepciï¿½n.
 		super("IlegalParseIntException");
 	}
 
