@@ -320,7 +320,11 @@ public class Menus {
 			menuCarrito();
 			break;
 
-		case 3: deleteProduct();break;
+		case 3:
+			deleteProduct();
+			enterToContinue(keyBoard);
+			menuCarrito();
+			break;
 		case 4: containsProd.eliminateCarr();break;
 
 		}
@@ -350,8 +354,10 @@ public class Menus {
 		String inpUser = keyBoard.nextLine(); 
 		char charcter = inpUser.charAt(0);
 		/* Implementacion de excepci�n de parseo.*/ 
-		if(! isNumber( charcter,keyBoard ) )
+		if(!isNumber( charcter,keyBoard )) {
 			menuCarrito();
+		}
+
 		Integer intInpUser = Integer.parseInt(inpUser);
 		containsProd.eliminateProduct(intInpUser);
 	}
