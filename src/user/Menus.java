@@ -325,7 +325,11 @@ public class Menus {
 			enterToContinue(keyBoard);
 			menuCarrito();
 			break;
-		case 4: containsProd.eliminateCarr();break;
+		case 4:
+			containsProd.eliminateCarr();
+			enterToContinue(keyBoard);
+			menuCarrito();
+			break;
 
 		}
 	}
