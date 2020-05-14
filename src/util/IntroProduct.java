@@ -43,9 +43,9 @@ public class IntroProduct {
                 newProduct.setProductType(ProductType.CELULARES);
                 break;
         }
-
+        Integer op = Integer.valueOf(iProduct);
         System.out.println("Introduzca marca de producto: ");
-        switch (Integer.valueOf(iProduct)){
+        switch (op){
             case 1:
                 clothesBrands(newProduct); 
                 break;
@@ -53,23 +53,23 @@ public class IntroProduct {
                 cellphonesBrands(newProduct);
                 break;
         }
-
-        System.out.println("Introduzca Genero de producto: \n1) HOMBRE\n2) MUJER\n3) UNISEX");
-        iProduct = kb.nextLine();
-        while(!Menus.isNumber(iProduct.charAt(0), kb)) {
-            System.out.println("Opcion invalida");//Espaciado--
-            System.out.println("Introduzca tipo de producto: \nOPCIONES: \n1)ROPA\n2)CELULARES");
+        if(op == 1) {
+            System.out.println("Introduzca Genero de producto: \n1) HOMBRE\n2) MUJER\n3) UNISEX");
             iProduct = kb.nextLine();
+            while (!Menus.isNumber(iProduct.charAt(0), kb)) {
+                System.out.println("Opcion invalida");//Espaciado--
+                System.out.println("Introduzca tipo de producto: \nOPCIONES: \n1)ROPA\n2)CELULARES");
+                iProduct = kb.nextLine();
+            }
+            switch (Integer.valueOf(iProduct)) {
+                case 1:
+                    newProduct.setGenderType(GenderType.HOMBRE);
+                case 2:
+                    newProduct.setGenderType(GenderType.MUJER);
+                case 3:
+                    newProduct.setGenderType(GenderType.UNISEX);
+            }
         }
-        switch (Integer.valueOf(iProduct)){
-            case 1:
-                newProduct.setGenderType(GenderType.HOMBRE);
-            case 2:
-                newProduct.setGenderType(GenderType.MUJER);
-            case 3:
-                newProduct.setGenderType(GenderType.UNISEX);
-        }
-
         System.out.println("Introduce stock del producto: ");
         iProduct = kb.nextLine();;
         newProduct.setProductStock(Integer.valueOf(iProduct));

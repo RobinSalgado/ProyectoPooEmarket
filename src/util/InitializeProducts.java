@@ -4,6 +4,7 @@ import enums.GenderType;
 import enums.ProductBrands;
 import enums.ProductType;
 import info.ProductInfo;
+import user.Menus;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -305,10 +306,16 @@ public class InitializeProducts extends genID{
 		Scanner keyBoard = new Scanner(System.in);
 		System.out.println("Ingrese un numero para agregar al carrito o si quieres regresar, presiona cero:\n");
 		String inpUsr = keyBoard.nextLine();
+		// cuando presione un caracter en vez de un numero
+		while (!Menus.isNumber(inpUsr.charAt(0), keyBoard)) {
+			System.err.println("LA OPCION DEBE SER UN NUMERO!\n");
+			System.out.println("Ingrese de nuevo un numero para agregar al carrito o si quieres regresar, presiona cero:\n");
+			inpUsr = keyBoard.nextLine();
+		}
 		Integer intInpUsr =Integer.parseInt(inpUsr);
 
 		while(intInpUsr >= i) {
-			System.out.println("NO EXISTE ESE NUMERO DE PRODUCTO!\n");
+			System.err.println("NO EXISTE ESE NUMERO DE PRODUCTO!\n");
 			System.out.println("Por favor, Ingrese un numero para agregar al carrito o si quieres regresar, presiona cero:\n");
 			inpUsr = keyBoard.nextLine();
 			intInpUsr =Integer.parseInt(inpUsr);
@@ -317,6 +324,7 @@ public class InitializeProducts extends genID{
 			return;
 		} else {
 			addProduct(intInpUsr, auxMap);
+			System.out.println("Agregado correctamente");
 		}
 	}// Fin de metodo seeProducts.
 
