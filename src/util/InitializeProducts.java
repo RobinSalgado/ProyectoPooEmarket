@@ -306,9 +306,14 @@ public class InitializeProducts extends genID{
 		System.out.println("Ingrese un numero para agregar al carrito:\n");
 		String inpUsr = keyBoard.nextLine();
 		Integer intInpUsr =Integer.parseInt(inpUsr);
-		if(intInpUsr <= i) {
-			addProduct(intInpUsr, auxMap);
+
+		while(intInpUsr >= i) {
+			System.out.println("NO EXISTE ESE NUMERO DE PRODUCTO!\n");
+			System.out.println("Por favor, Ingrese un numero para agregar al carrito:\n");
+			inpUsr = keyBoard.nextLine();
+			intInpUsr =Integer.parseInt(inpUsr);
 		}
+		addProduct(intInpUsr, auxMap);
 	}// Fin de metodo seeProducts.
 
 	public void addProduct(int n, Map<Integer, ProductInfo> aux) {
