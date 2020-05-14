@@ -303,17 +303,21 @@ public class InitializeProducts extends genID{
 
 		System.out.println();
 		Scanner keyBoard = new Scanner(System.in);
-		System.out.println("Ingrese un numero para agregar al carrito:\n");
+		System.out.println("Ingrese un numero para agregar al carrito o si quieres regresar, presiona cero:\n");
 		String inpUsr = keyBoard.nextLine();
 		Integer intInpUsr =Integer.parseInt(inpUsr);
 
 		while(intInpUsr >= i) {
 			System.out.println("NO EXISTE ESE NUMERO DE PRODUCTO!\n");
-			System.out.println("Por favor, Ingrese un numero para agregar al carrito:\n");
+			System.out.println("Por favor, Ingrese un numero para agregar al carrito o si quieres regresar, presiona cero:\n");
 			inpUsr = keyBoard.nextLine();
 			intInpUsr =Integer.parseInt(inpUsr);
 		}
-		addProduct(intInpUsr, auxMap);
+		if(intInpUsr == 0) {
+			return;
+		} else {
+			addProduct(intInpUsr, auxMap);
+		}
 	}// Fin de metodo seeProducts.
 
 	public void addProduct(int n, Map<Integer, ProductInfo> aux) {

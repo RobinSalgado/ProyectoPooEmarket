@@ -227,10 +227,32 @@ public class Menus {
 				enterToContinue(keyBoard);
 				menuPrincipal();
 			} else {
-				purchase.buyProduct(this.u, this.nombreUsrActual, this.containsProd);
-				System.out.println(this.u.getUsers().get(nombreUsrActual).getPurchaseInfo());
-				enterToContinue(keyBoard);
-				menuPrincipal();
+				Scanner keyBoard2 = new Scanner(System.in);
+				System.out.println("1.- Regresar al menu anterior \n" +
+						"2.- Comprar");
+				String inpUsr2 = keyBoard.nextLine();
+				while (!isNumber(inpUsr2.charAt(0), keyBoard2)) {
+					System.out.println("opcion invalida, por favor ingresa opcion nuevamente");
+					System.out.println("1) Regresar al menu anterior \n" +
+							"2) Comprar");
+					inpUsr2 = keyBoard.nextLine();
+				}
+				switch (Integer.valueOf(inpUsr2)) {
+					case 1:
+						menuCompra();
+						break;
+					case 2:
+						purchase.buyProduct(this.u, this.nombreUsrActual, this.containsProd);
+						System.out.println(this.u.getUsers().get(nombreUsrActual).getPurchaseInfo());
+						enterToContinue(keyBoard);
+						menuPrincipal();
+						break;
+					default:
+						System.out.println("opcion invalida, por favor ingresa opcion nuevamente");
+						menuCompra();
+						break;
+				}
+				keyBoard2.close();
 			}
 			break;
 		default: 
@@ -283,10 +305,32 @@ public class Menus {
 					enterToContinue(keyBoard);
 					menuProductos();
 				}else {
-					purchase.buyProduct(this.u, this.nombreUsrActual, this.containsProd);
-					System.out.println(this.u.getUsers().get(nombreUsrActual).getPurchaseInfo());
-					enterToContinue(keyBoard);
-					menuPrincipal();
+					Scanner keyBoard2 = new Scanner(System.in);
+					System.out.println("1) Regresar al menu anterior \n" +
+							"2) Comprar");
+					String inpUsr2 = keyBoard.nextLine();
+					while (!isNumber(inpUsr2.charAt(0), keyBoard2)) {
+						System.out.println("opcion invalida, por favor ingresa opcion nuevamente");
+						System.out.println("1.- Regresar al menu anterior \n" +
+								"2.- Comprar");
+						inpUsr2 = keyBoard.nextLine();
+					}
+					switch (Integer.valueOf(inpUsr2)) {
+						case 1:
+							menuProductos();
+							break;
+						case 2:
+							purchase.buyProduct(this.u, this.nombreUsrActual, this.containsProd);
+							System.out.println(this.u.getUsers().get(nombreUsrActual).getPurchaseInfo());
+							enterToContinue(keyBoard);
+							menuPrincipal();
+							break;
+						default:
+							System.out.println("opcion invalida, por favor ingresa opcion nuevamente");
+							menuCompra();
+							break;
+					}
+					keyBoard2.close();
 				}
 				break;
 			}

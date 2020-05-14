@@ -29,6 +29,7 @@ public class PurchaseUtil extends genID{
             auxProd.put(a, products.addProdToCar.get(product));
             a++;
         }
+
         System.out.println();
         Scanner keyBoard = new Scanner(System.in);
         System.out.println("Ingrese el tipo de envio:\n"
